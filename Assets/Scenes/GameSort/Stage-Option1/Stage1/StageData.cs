@@ -756,6 +756,7 @@ public class StageData : MonoBehaviour
                 //print("隨機:" + PuzzleNumber[pp]);
             }
         }
+        GameObject.Find("Canvas/PuzzleTime").GetComponent<Text>().text = "Puzzle Time:"+puzzle_time;
     }
 
     public void Update()
@@ -768,6 +769,7 @@ public class StageData : MonoBehaviour
     public void PushButtom1()
     {
         string buttom1 = GameObject.Find("Canvas/GameContent/Pool/Option1/Text").GetComponent<Text>().text;
+        GameObject.Find("Canvas/GameContent/Pool/Option1").SetActive(false);
         AnswerCheck(anscheck, score,buttom1);
     }
 
@@ -775,6 +777,7 @@ public class StageData : MonoBehaviour
     public void PushButtom2()
     {
         string buttom2 = GameObject.Find("Canvas/GameContent/Pool/Option2/Text").GetComponent<Text>().text;
+        GameObject.Find("Canvas/GameContent/Pool/Option2").SetActive(false);
         AnswerCheck(anscheck, score, buttom2);
     }
 
@@ -782,6 +785,7 @@ public class StageData : MonoBehaviour
     public void PushButtom3()
     {
         string buttom3 = GameObject.Find("Canvas/GameContent/Pool/Option3/Text").GetComponent<Text>().text;
+        GameObject.Find("Canvas/GameContent/Pool/Option3").SetActive(false);
         AnswerCheck(anscheck, score, buttom3);
     }
 
@@ -789,6 +793,7 @@ public class StageData : MonoBehaviour
     public void PushButtom4()
     {
         string buttom4 = GameObject.Find("Canvas/GameContent/Pool/Option4/Text").GetComponent<Text>().text;
+        GameObject.Find("Canvas/GameContent/Pool/Option4").SetActive(false);
         AnswerCheck(anscheck, score, buttom4);
     }
 
@@ -796,6 +801,7 @@ public class StageData : MonoBehaviour
     public void PushButtom5()
     {
         string buttom5 = GameObject.Find("Canvas/GameContent/Pool/Option5/Text").GetComponent<Text>().text;
+        GameObject.Find("Canvas/GameContent/Pool/Option5").SetActive(false);
         AnswerCheck(anscheck, score, buttom5);
     }
 
@@ -803,6 +809,7 @@ public class StageData : MonoBehaviour
     public void PushButtom6()
     {
         string buttom6 = GameObject.Find("Canvas/GameContent/Pool/Option6/Text").GetComponent<Text>().text;
+        GameObject.Find("Canvas/GameContent/Pool/Option6").SetActive(false);
         AnswerCheck(anscheck, score, buttom6);
     }
 
@@ -1066,31 +1073,37 @@ public class StageData : MonoBehaviour
             print(temp);
             if (i == 0)
             {
+                GameObject.Find("Canvas/GameContent/Pool/Option" + temp).SetActive(true);
                 GameObject.Find("Canvas/GameContent/Pool/Option" + temp + "/Text").GetComponent<Text>().text = Option1;
                 print(Option1);
             }
             if (i == 1)
             {
+                GameObject.Find("Canvas/GameContent/Pool/Option" + temp).SetActive(true);
                 GameObject.Find("Canvas/GameContent/Pool/Option" + temp + "/Text").GetComponent<Text>().text = Option2;
                 print(Option2);
             }
             if (i == 2)
             {
+                GameObject.Find("Canvas/GameContent/Pool/Option" + temp).SetActive(true);
                 GameObject.Find("Canvas/GameContent/Pool/Option" + temp + "/Text").GetComponent<Text>().text = Option3;
                 print(Option3);
             }
             if (i == 3)
             {
+                GameObject.Find("Canvas/GameContent/Pool/Option" + temp).SetActive(true);
                 GameObject.Find("Canvas/GameContent/Pool/Option" + temp + "/Text").GetComponent<Text>().text = Option4;
                 print(Option4);
             }
             if (i == 4)
             {
+                GameObject.Find("Canvas/GameContent/Pool/Option" + temp).SetActive(true);
                 GameObject.Find("Canvas/GameContent/Pool/Option" + temp + "/Text").GetComponent<Text>().text = Option5;
                 print(Option5);
             }
             if (i == 5)
             {
+                GameObject.Find("Canvas/GameContent/Pool/Option" + temp).SetActive(true);
                 GameObject.Find("Canvas/GameContent/Pool/Option" + temp + "/Text").GetComponent<Text>().text = Option6;
                 print(Option6);
             }
@@ -1124,8 +1137,7 @@ public class StageData : MonoBehaviour
     {
 
         if (Panel != null)
-        {
-            
+        {            
             Panel.SetActive(true);
             GameObject.Find("Canvas/Next/answer2").GetComponent<Text>().text = FinalAnswer;
         }
