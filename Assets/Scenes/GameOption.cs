@@ -17,7 +17,34 @@ public class GameOption : MonoBehaviour
     {
         
     }
-    public void UsMan()
+    public void speakeroption(int val)
+    {
+        if (val == 0)
+        {
+            GameOption.sound = "John";
+            GameOption.voice = "us";
+            GameObject.Find("Canvas/MainManu/OptionMenu/speakcheck").GetComponent<Text>().text = "US Male";
+        }
+        if (val == 1)
+        {
+            GameOption.sound = "Linda";
+            GameOption.voice = "us";
+            GameObject.Find("Canvas/MainManu/OptionMenu/speakcheck").GetComponent<Text>().text = "US Female";
+        }
+        if (val == 2)
+        {
+            GameOption.sound = "Harry";
+            GameOption.voice = "gb";
+            GameObject.Find("Canvas/MainManu/OptionMenu/speakcheck").GetComponent<Text>().text = "UK Male";
+        }
+        if (val == 3)
+        {
+            GameOption.sound = "Alice";
+            GameOption.voice = "gb";
+            GameObject.Find("Canvas/MainManu/OptionMenu/speakcheck").GetComponent<Text>().text = "UK Female";
+        }
+    }
+    /*public void UsMan()
     {
         GameOption.sound = "John";
         GameOption.voice = "us";
@@ -40,5 +67,5 @@ public class GameOption : MonoBehaviour
         GameOption.sound = "Alice";
         GameOption.voice = "gb";
         GameObject.Find("Canvas/MainManu/OptionMenu/speakcheck").GetComponent<Text>().text = "目前是英式女聲";
-    }
+    }*/
 }

@@ -13,16 +13,13 @@ public class puzzlesetting : MonoBehaviour
     public void pushthree()
     {
         puzzletype = 3;
-        GameObject.Find("Canvas/PuzzleSize").GetComponent<Text>().text = "拼圖數量:3X3";
     }
     public void pushfour()
     {
         puzzletype = 4;
-        GameObject.Find("Canvas/PuzzleSize").GetComponent<Text>().text = "拼圖數量:4X4";
     }
     public void pushfive()
     {
         puzzletype = 5;
-        GameObject.Find("Canvas/PuzzleSize").GetComponent<Text>().text = "拼圖數量:5X5";
     }
 }
