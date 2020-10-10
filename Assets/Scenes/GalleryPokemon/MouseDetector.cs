@@ -20,8 +20,12 @@ public class MouseDetector : MonoBehaviour
     public float startPos;
     void Start()
     {
-
-
+        GameObject.Find("BGM").GetComponent<BGMsetting>().Close(); ;
+    }
+    public void BackToMainMenu()
+    {
+        GameObject.Find("BGM").GetComponent<BGMsetting>().Open(); ;
+        SceneManager.LoadScene("MainMenu");
     }
     void Update()
     {

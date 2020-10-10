@@ -14,17 +14,21 @@ public class BGMsetting : MonoBehaviour
     public static float volumenum;
     public static int check = 0;
     public GameObject Panel;
+    public static int checkcanvas=0;
+    public GameObject Canvas;
     //public GameObject option;
     // Start is called before the first frame update
 
     public void Awake()
     {
+        Canvas.SetActive(true);
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
         }
         else
         {
+            
             DontDestroyOnLoad(transform.gameObject);
             //DontDestroyOnLoad(option);
             instance = this;
@@ -84,5 +88,13 @@ public class BGMsetting : MonoBehaviour
         {
             Panel.SetActive(false);
         }
+    }
+    public void Open()
+    {
+        Canvas.SetActive(true);
+    }
+    public void Close()
+    {
+        Canvas.SetActive(false);
     }
 }

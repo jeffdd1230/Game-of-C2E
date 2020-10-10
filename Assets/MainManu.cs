@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MainManu : MonoBehaviour
 {
+    public void Start()
+    {
+        
+    }
     public void PlayGame()
     {
        SceneManager.LoadScene("LevelOption");
