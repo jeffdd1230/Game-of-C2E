@@ -33,9 +33,6 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: d8bacd00bd5da244186b3755f28ca1b6
   - enabled: 1
-    path: Assets/Scenes/GameSort/Stage-Option1/stage-Option1.unity
-    guid: c693b8ca428bda8409bba35617a0d03e
-  - enabled: 1
     path: Assets/Scenes/GalleryPokemon/Pokemon.unity
     guid: 9c882b6af8bccf248a290359496fdb51
   m_configObjects: {}

@@ -29,5 +29,9 @@ public class NextStage : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+    public void Gallery()
+    {
+        SceneManager.LoadScene("Gallery");
+    }
 
 }

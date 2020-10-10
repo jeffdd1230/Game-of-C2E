@@ -194,10 +194,10 @@ public class StageData : MonoBehaviour
 
         //問題選擇(目前沒有隨機問題選擇)
         //題目從2開始
-        x = UnityEngine.Random.Range(1, 300);
+        x = UnityEngine.Random.Range(1, 200);
         if (x == 113)
         {
-            x = UnityEngine.Random.Range(1, 300);
+            x = UnityEngine.Random.Range(1, 200);
         }
 
 
