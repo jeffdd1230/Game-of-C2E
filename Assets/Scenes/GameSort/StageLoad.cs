@@ -17,9 +17,9 @@ public class StageLoad : MonoBehaviour
         
         if(Stagetype == 2)
         {
-            SceneManager.LoadScene("Stage1Hard");
-           Stagetype = 2;
-          GameObject.Find("Canvas/Stage Level").GetComponent<Text>().text = "Hard";
+            SceneManager.LoadScene("Stage_Hard");
+            Stagetype = 2;
+            GameObject.Find("Canvas/Stage Level").GetComponent<Text>().text = "Hard";
         }
         
     }

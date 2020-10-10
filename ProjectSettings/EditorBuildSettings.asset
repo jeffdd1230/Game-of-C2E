@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GameSort/Stage-Option1/Stage1/Stage1.unity
     guid: b80b4a26d4fbacd4f8a4616c6c54ab34
   - enabled: 1
+    path: Assets/Scenes/GameSort/Stage-Option1/Stage_Hard/Stage_Hard.unity
+    guid: 9a5b0b7ef7e6b3a4e99466451b2de8e7
+  - enabled: 1
     path: Assets/Scenes/5pieces.unity
     guid: 217ad6fb63e444f438997ca2a2f4c327
   - enabled: 1

@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using System;
 using System.IO;
 using System.Text;
-public class StageData : MonoBehaviour
+public class StageData_Hard : MonoBehaviour
 {
     //piecenum為確認拿到的拼圖的位置
     //puzzlenum為確認拿到的拼圖種類 目前1-6種
@@ -29,13 +29,15 @@ public class StageData : MonoBehaviour
     public string Option4 = " ";
     public string Option5 = " ";
     public string Option6 = " ";
+    public string Option7 = " ";
+    public string Option8 = " ";
 
     //data導入
     public TextAsset data;
     public TextAsset record;
     public string[] lineArray;
     string[][] Array;
-    public static string[] AllOption = new string[6]; //產生選項存放陣列
+    public static string[] AllOption = new string[8]; //產生選項存放陣列
 
 
     //儲存本題答案
@@ -68,6 +70,8 @@ public class StageData : MonoBehaviour
     public string record1;
     public string record2;
     public string record3;
+
+
     //存檔路徑
     public string path;
     public string finishpath;
@@ -153,6 +157,7 @@ public class StageData : MonoBehaviour
         DateTimeText = DateTime.Now.ToString();
         print(DateTimeText);
 
+
         //拼圖模式確認
         if (puzzlecheck == 0)
         {
@@ -231,7 +236,11 @@ public class StageData : MonoBehaviour
         EQ = Array[x][2];
         FinalAnswer = EQ;
         GameObject.Find("Canvas/GameContent/Debug").GetComponent<Text>().text = EQ;
+
+        //Debug用
         GameObject.Find("Canvas/DebugNum").GetComponent<Text>().text = DebugNum.ToString();
+
+
         string Problem = Array[x][14];
         int QuestionNum = 0;
         print(EQ);
@@ -283,6 +292,9 @@ public class StageData : MonoBehaviour
 
 
         //選擇挖空的問題導入P陣列
+
+
+        //確定題目中問題挖空數量有沒有大於等於3
         if (P.Length >= 3)
         {
             ModeCheck = 1;
@@ -361,14 +373,14 @@ public class StageData : MonoBehaviour
             EQ_Re = EQ;
         }
 
-        
-        
 
 
 
 
 
-        if  (P.Length < 3 )
+
+        //確定題目中問題挖空數量少於3
+        if (P.Length < 3 )
         {
             ModeCheck = 2;
             int Q1 = UnityEngine.Random.Range(0, P.Length);
@@ -429,14 +441,17 @@ public class StageData : MonoBehaviour
         if (ModeCheck==1)
         {
             int ii = 0;
-           while (ii<6)
+           while (ii<8)
             {
+                //從3個答案隨機挑一個
                 int ran1 = UnityEngine.Random.Range(0, 3);
                 int ran = q[ran1];
-                if(ii<6&& Answer[ran] == null)
-                {
-                    continue;
-                }
+
+                //放入選項中
+                //if(ii<8&& Answer[ran] == null)
+                //{
+                //    continue;
+                //}
                 if (ii == 0 && Answer[ran] != null)
                 {
                     AllOption[ii] = Answer[ran];
@@ -475,12 +490,20 @@ public class StageData : MonoBehaviour
                 {
                     continue;
                 }
+                if (ii == 6)
+                {
+                    AllOption[ii] = GameObject.Find("Canvas/GameContent").GetComponent<OtherData>().GotData();
+                }
+                if (ii == 7)
+                {
+                    AllOption[ii] = GameObject.Find("Canvas/GameContent").GetComponent<OtherData>().GotData();
+                }
                 ii += 1;
             }
             int iii = 0;
-            while (iii < 6)
+            while (iii < 8)
             {
-                int xx = UnityEngine.Random.Range(0, 6);
+                int xx = UnityEngine.Random.Range(0, 8);
                 if (iii == 0 && AllOption[xx] != null)
                 {
                     if (AllOption[xx].Contains("_"))
@@ -567,6 +590,28 @@ public class StageData : MonoBehaviour
                 {
                     continue;
                 }
+                if (iii == 6 && AllOption[xx] != null)
+                {
+                    Option7 = AllOption[xx];
+                    AllOption[xx] = null;
+                    iii += 1;
+                    continue;
+                }
+                if (iii == 6 && AllOption[xx] == null)
+                {
+                    continue;
+                }
+                if (iii == 7 && AllOption[xx] != null)
+                {                    
+                    Option8 = AllOption[xx];
+                    AllOption[xx] = null;
+                    iii += 1;
+                    continue;
+                }
+                if (iii == 7 && AllOption[xx] == null)
+                {
+                    continue;
+                }
                 iii += 1;
             }
             GameObject.Find("Canvas/GameContent/Pool/Option1/Text").GetComponent<Text>().text = Option1;
@@ -575,6 +620,8 @@ public class StageData : MonoBehaviour
             GameObject.Find("Canvas/GameContent/Pool/Option4/Text").GetComponent<Text>().text = Option4;
             GameObject.Find("Canvas/GameContent/Pool/Option5/Text").GetComponent<Text>().text = Option5;
             GameObject.Find("Canvas/GameContent/Pool/Option6/Text").GetComponent<Text>().text = Option6;
+            GameObject.Find("Canvas/GameContent/Pool/Option7/Text").GetComponent<Text>().text = Option7;
+            GameObject.Find("Canvas/GameContent/Pool/Option8/Text").GetComponent<Text>().text = Option8;
         }
 
 
@@ -582,7 +629,7 @@ public class StageData : MonoBehaviour
         if (ModeCheck==2)
         {
             int jj = 0;
-            while (jj < 6)
+            while (jj < 8)
             {
                 int ran1 = UnityEngine.Random.Range(0, 2);
                 int ran = q[ran1];
@@ -645,12 +692,20 @@ public class StageData : MonoBehaviour
                     jj += 1;
                     continue;
                 }
+                if (jj == 6)
+                {
+                    AllOption[jj] = GameObject.Find("Canvas/GameContent").GetComponent<OtherData>().GotData();
+                }
+                if (jj == 7)
+                {
+                    AllOption[jj] = GameObject.Find("Canvas/GameContent").GetComponent<OtherData>().GotData();
+                }
                 jj += 1;
             }
             int jjj = 0;
-            while (jjj < 6)
+            while (jjj < 8)
             {
-                int xx = UnityEngine.Random.Range(0, 6);
+                int xx = UnityEngine.Random.Range(0, 8);
                 if (jjj == 0 && AllOption[xx] != null)
                 {
                     if (AllOption[xx].Contains("_"))
@@ -736,7 +791,37 @@ public class StageData : MonoBehaviour
                 if (jjj == 5 && AllOption[xx] == null)
                 {
                     continue;
-                }               
+                }
+                if (jjj == 6 && AllOption[xx] != null)
+                {
+                    if (AllOption[xx].Contains("_"))
+                    {
+                        AllOption[xx] = AllOption[xx].Replace("_", " ");
+                    }
+                    Option7 = AllOption[xx];
+                    AllOption[xx] = null;
+                    jjj += 1;
+                    continue;
+                }
+                if (jjj == 6 && AllOption[xx] == null)
+                {
+                    continue;
+                }
+                if (jjj == 7 && AllOption[xx] != null)
+                {
+                    if (AllOption[xx].Contains("_"))
+                    {
+                        AllOption[xx] = AllOption[xx].Replace("_", " ");
+                    }
+                    Option8 = AllOption[xx];
+                    AllOption[xx] = null;
+                    jjj += 1;
+                    continue;
+                }
+                if (jjj == 7 && AllOption[xx] == null)
+                {
+                    continue;
+                }
                 jjj += 1;
             }
             GameObject.Find("Canvas/GameContent/Pool/Option1/Text").GetComponent<Text>().text = Option1;
@@ -745,6 +830,8 @@ public class StageData : MonoBehaviour
             GameObject.Find("Canvas/GameContent/Pool/Option4/Text").GetComponent<Text>().text = Option4;
             GameObject.Find("Canvas/GameContent/Pool/Option5/Text").GetComponent<Text>().text = Option5;
             GameObject.Find("Canvas/GameContent/Pool/Option6/Text").GetComponent<Text>().text = Option6;
+            GameObject.Find("Canvas/GameContent/Pool/Option7/Text").GetComponent<Text>().text = Option7;
+            GameObject.Find("Canvas/GameContent/Pool/Option8/Text").GetComponent<Text>().text = Option8;
         }
         //創建紀錄
         if (!File.Exists(path))
@@ -818,6 +905,18 @@ public class StageData : MonoBehaviour
         string buttom6 = GameObject.Find("Canvas/GameContent/Pool/Option6/Text").GetComponent<Text>().text;
         GameObject.Find("Canvas/GameContent/Pool/Option6").SetActive(false);
         AnswerCheck(anscheck, score, buttom6);
+    }
+    public void PushButtom7()
+    {
+        string buttom7 = GameObject.Find("Canvas/GameContent/Pool/Option7/Text").GetComponent<Text>().text;
+        GameObject.Find("Canvas/GameContent/Pool/Option7").SetActive(false);
+        AnswerCheck(anscheck, score, buttom7);
+    }
+    public void PushButtom8()
+    {
+        string buttom8 = GameObject.Find("Canvas/GameContent/Pool/Option8/Text").GetComponent<Text>().text;
+        GameObject.Find("Canvas/GameContent/Pool/Option8").SetActive(false);
+        AnswerCheck(anscheck, score, buttom8);
     }
 
 
@@ -1063,56 +1162,59 @@ public class StageData : MonoBehaviour
         score = 0;
         EQ = EQ_Re;
         //重新打亂順序
-        int[] RanOpAgain = new int[6];
-        for (int i = 0; i < 6; i++)
+        int[] RanOpAgain = new int[8];
+        for (int i = 0; i < 8; i++)
         {
-            int temp = UnityEngine.Random.Range(1, 7);
-            for(int j = 0; j < 6;j++)
+            int temp = UnityEngine.Random.Range(1, 9);
+            for(int j = 0; j < 8;j++)
             {
                 while (RanOpAgain[j] == temp)
                 {
-                    temp = UnityEngine.Random.Range(1, 7);
+                    temp = UnityEngine.Random.Range(1, 9);
                     j = 0;
                     continue;
                 }
             }
             RanOpAgain[i] = temp;
-            print(temp);
             if (i == 0)
             {
                 GameObject.Find("Canvas/GameContent/Pool/Option" + temp).SetActive(true);
                 GameObject.Find("Canvas/GameContent/Pool/Option" + temp + "/Text").GetComponent<Text>().text = Option1;
-                print(Option1);
             }
             if (i == 1)
             {
                 GameObject.Find("Canvas/GameContent/Pool/Option" + temp).SetActive(true);
                 GameObject.Find("Canvas/GameContent/Pool/Option" + temp + "/Text").GetComponent<Text>().text = Option2;
-                print(Option2);
             }
             if (i == 2)
             {
                 GameObject.Find("Canvas/GameContent/Pool/Option" + temp).SetActive(true);
                 GameObject.Find("Canvas/GameContent/Pool/Option" + temp + "/Text").GetComponent<Text>().text = Option3;
-                print(Option3);
             }
             if (i == 3)
             {
                 GameObject.Find("Canvas/GameContent/Pool/Option" + temp).SetActive(true);
                 GameObject.Find("Canvas/GameContent/Pool/Option" + temp + "/Text").GetComponent<Text>().text = Option4;
-                print(Option4);
             }
             if (i == 4)
             {
                 GameObject.Find("Canvas/GameContent/Pool/Option" + temp).SetActive(true);
                 GameObject.Find("Canvas/GameContent/Pool/Option" + temp + "/Text").GetComponent<Text>().text = Option5;
-                print(Option5);
             }
             if (i == 5)
             {
                 GameObject.Find("Canvas/GameContent/Pool/Option" + temp).SetActive(true);
                 GameObject.Find("Canvas/GameContent/Pool/Option" + temp + "/Text").GetComponent<Text>().text = Option6;
-                print(Option6);
+            }
+            if (i == 6)
+            {
+                GameObject.Find("Canvas/GameContent/Pool/Option" + temp).SetActive(true);
+                GameObject.Find("Canvas/GameContent/Pool/Option" + temp + "/Text").GetComponent<Text>().text = Option7;
+            }
+            if (i == 7)
+            {
+                GameObject.Find("Canvas/GameContent/Pool/Option" + temp).SetActive(true);
+                GameObject.Find("Canvas/GameContent/Pool/Option" + temp + "/Text").GetComponent<Text>().text = Option8;
             }
 
         }
