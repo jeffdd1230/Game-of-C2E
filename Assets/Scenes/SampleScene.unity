@@ -220,15 +220,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puzzle: 
   lineArray: []
-  piece1: {fileID: 1534975964}
-  piece2: {fileID: 637721110}
-  piece3: {fileID: 398892497}
-  piece4: {fileID: 1012027547}
-  piece5: {fileID: 408616546}
-  piece6: {fileID: 1824690300}
-  piece7: {fileID: 1703114494}
-  piece8: {fileID: 636687791}
-  piece9: {fileID: 2046234649}
 --- !u!1 &335567948
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,7 +514,6 @@ MonoBehaviour:
   RightPosition: {x: 0, y: 0, z: 0}
   InRightPosition: 0
   Selected: 0
-  image1: {fileID: 0}
   num: 0
 --- !u!1 &408616546
 GameObject:
@@ -742,7 +732,6 @@ MonoBehaviour:
   RightPosition: {x: 0, y: 0, z: 0}
   InRightPosition: 0
   Selected: 0
-  image1: {fileID: 0}
   num: 0
 --- !u!1 &492398913
 GameObject:
@@ -790,15 +779,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puzzle: 
   lineArray: []
-  piece1: {fileID: 1534975964}
-  piece2: {fileID: 637721110}
-  piece3: {fileID: 398892497}
-  piece4: {fileID: 1012027547}
-  piece5: {fileID: 408616546}
-  piece6: {fileID: 1824690300}
-  piece7: {fileID: 1703114494}
-  piece8: {fileID: 636687791}
-  piece9: {fileID: 2046234649}
 --- !u!212 &492398916
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -896,15 +876,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puzzle: 
   lineArray: []
-  piece1: {fileID: 1534975964}
-  piece2: {fileID: 637721110}
-  piece3: {fileID: 398892497}
-  piece4: {fileID: 1012027547}
-  piece5: {fileID: 408616546}
-  piece6: {fileID: 1824690300}
-  piece7: {fileID: 1703114494}
-  piece8: {fileID: 636687791}
-  piece9: {fileID: 2046234649}
 --- !u!212 &497268887
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1074,15 +1045,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puzzle: 
   lineArray: []
-  piece1: {fileID: 1534975964}
-  piece2: {fileID: 637721110}
-  piece3: {fileID: 398892497}
-  piece4: {fileID: 1012027547}
-  piece5: {fileID: 408616546}
-  piece6: {fileID: 1824690300}
-  piece7: {fileID: 1703114494}
-  piece8: {fileID: 636687791}
-  piece9: {fileID: 2046234649}
 --- !u!1 &573208856
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,15 +1091,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puzzle: 
   lineArray: []
-  piece1: {fileID: 1534975964}
-  piece2: {fileID: 637721110}
-  piece3: {fileID: 398892497}
-  piece4: {fileID: 1012027547}
-  piece5: {fileID: 408616546}
-  piece6: {fileID: 1824690300}
-  piece7: {fileID: 1703114494}
-  piece8: {fileID: 636687791}
-  piece9: {fileID: 2046234649}
 --- !u!212 &573208859
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1406,7 +1359,6 @@ MonoBehaviour:
   RightPosition: {x: 0, y: 0, z: 0}
   InRightPosition: 0
   Selected: 0
-  image1: {fileID: 0}
   num: 0
 --- !u!1 &637721110
 GameObject:
@@ -1625,7 +1577,6 @@ MonoBehaviour:
   RightPosition: {x: 0, y: 0, z: 0}
   InRightPosition: 0
   Selected: 0
-  image1: {fileID: 0}
   num: 0
 --- !u!1 &731493566
 GameObject:
@@ -1820,7 +1771,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749253055}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -2266,7 +2217,6 @@ MonoBehaviour:
   RightPosition: {x: 0, y: 0, z: 0}
   InRightPosition: 0
   Selected: 0
-  image1: {fileID: 0}
   num: 0
 --- !u!1 &1019305798
 GameObject:
@@ -2314,15 +2264,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puzzle: 
   lineArray: []
-  piece1: {fileID: 1534975964}
-  piece2: {fileID: 637721110}
-  piece3: {fileID: 398892497}
-  piece4: {fileID: 1012027547}
-  piece5: {fileID: 408616546}
-  piece6: {fileID: 1824690300}
-  piece7: {fileID: 1703114494}
-  piece8: {fileID: 636687791}
-  piece9: {fileID: 2046234649}
 --- !u!212 &1019305801
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2578,15 +2519,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puzzle: 
   lineArray: []
-  piece1: {fileID: 1534975964}
-  piece2: {fileID: 637721110}
-  piece3: {fileID: 398892497}
-  piece4: {fileID: 1012027547}
-  piece5: {fileID: 408616546}
-  piece6: {fileID: 1824690300}
-  piece7: {fileID: 1703114494}
-  piece8: {fileID: 636687791}
-  piece9: {fileID: 2046234649}
 --- !u!212 &1101255844
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2783,15 +2715,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puzzle: 
   lineArray: []
-  piece1: {fileID: 1534975964}
-  piece2: {fileID: 637721110}
-  piece3: {fileID: 398892497}
-  piece4: {fileID: 1012027547}
-  piece5: {fileID: 408616546}
-  piece6: {fileID: 1824690300}
-  piece7: {fileID: 1703114494}
-  piece8: {fileID: 636687791}
-  piece9: {fileID: 2046234649}
 --- !u!212 &1214028345
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3115,7 +3038,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1527255869}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -3360,7 +3283,6 @@ MonoBehaviour:
   RightPosition: {x: 0, y: 0, z: 0}
   InRightPosition: 0
   Selected: 0
-  image1: {fileID: 0}
   num: 0
 --- !u!1 &1542931210
 GameObject:
@@ -3964,7 +3886,6 @@ MonoBehaviour:
   RightPosition: {x: 0, y: 0, z: 0}
   InRightPosition: 0
   Selected: 0
-  image1: {fileID: 0}
   num: 0
 --- !u!1 &1728296807
 GameObject:
@@ -4012,15 +3933,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puzzle: 
   lineArray: []
-  piece1: {fileID: 1534975964}
-  piece2: {fileID: 637721110}
-  piece3: {fileID: 398892497}
-  piece4: {fileID: 1012027547}
-  piece5: {fileID: 408616546}
-  piece6: {fileID: 1824690300}
-  piece7: {fileID: 1703114494}
-  piece8: {fileID: 636687791}
-  piece9: {fileID: 2046234649}
 --- !u!212 &1728296810
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4350,7 +4262,6 @@ MonoBehaviour:
   RightPosition: {x: 0, y: 0, z: 0}
   InRightPosition: 0
   Selected: 0
-  image1: {fileID: 0}
   num: 0
 --- !u!1 &1985140298
 GameObject:
@@ -4398,15 +4309,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puzzle: 
   lineArray: []
-  piece1: {fileID: 1534975964}
-  piece2: {fileID: 637721110}
-  piece3: {fileID: 398892497}
-  piece4: {fileID: 1012027547}
-  piece5: {fileID: 408616546}
-  piece6: {fileID: 1824690300}
-  piece7: {fileID: 1703114494}
-  piece8: {fileID: 636687791}
-  piece9: {fileID: 2046234649}
 --- !u!212 &1985140301
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4754,7 +4656,6 @@ MonoBehaviour:
   RightPosition: {x: 0, y: 0, z: 0}
   InRightPosition: 0
   Selected: 0
-  image1: {fileID: 0}
   num: 0
 --- !u!1 &2069951543
 GameObject:

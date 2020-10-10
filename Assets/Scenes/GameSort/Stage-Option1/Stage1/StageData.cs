@@ -148,7 +148,50 @@ public class StageData : MonoBehaviour
         puzzlepath = Application.persistentDataPath + "/puzzle.txt";
         DateTimeText = DateTime.Now.ToString();
         print(DateTimeText);
-        
+
+        if (puzzlecheck == 0)
+        {
+            if (puzzlesetting.puzzletype == 3)
+            {
+                PuzzleCheck();
+                puzzle_time = 40;
+                nn = 9;
+            }
+            if (puzzlesetting.puzzletype == 4)
+            {
+                PuzzleCheck();
+                puzzle_time = 60;
+                nn = 16;
+            }
+            if (puzzlesetting.puzzletype == 5)
+            {
+                PuzzleCheck();
+                puzzle_time = 90;
+                nn = 25;
+            }
+            PuzzleNumber = new int[nn];
+            for (int pp = 0; pp < nn; pp++)
+            {
+                x = UnityEngine.Random.Range(1, nn + 1);
+                for (int j = 0; j < nn; j++)
+                {
+                    if (PuzzleNumber[j] == null)
+                    {
+                        break;
+                    }
+                    while (x == PuzzleNumber[j])
+                    {
+                        x = UnityEngine.Random.Range(1, nn + 1);
+                        j = 0;
+                        continue;
+                    }
+
+                }
+                PuzzleNumber[pp] = x;
+                //print("隨機:" + PuzzleNumber[pp]);
+            }
+        }
+
         //問題選擇(目前沒有隨機問題選擇)
         //題目從2開始
         x = UnityEngine.Random.Range(1, 300);
@@ -176,9 +219,9 @@ public class StageData : MonoBehaviour
         {
             Qtime_int = 5;
             time_int = 95;
-            InvokeRepeating("Qtimer", 1, 1);
+            
         }
-
+        InvokeRepeating("Qtimer", 1, 1);
 
         EQ = Array[x][2];
         FinalAnswer = EQ;
@@ -714,54 +757,13 @@ public class StageData : MonoBehaviour
         //顯示目前所得拼圖數
         GameObject.Find("Canvas/Level").GetComponent<Text>().text = "Got " + StageData.puzzlecheck.ToString() + " puzzles";
         //初始設定拼圖塊數以及拼圖時間
-        if (puzzlecheck == 0)
-        {
-            if(puzzlesetting.puzzletype == 3)
-            {
-                PuzzleCheck();
-                puzzle_time = 40;
-                nn = 9;
-            }
-            if (puzzlesetting.puzzletype == 4)
-            {
-                PuzzleCheck();
-                puzzle_time = 60;
-                nn = 16;
-            }
-            if (puzzlesetting.puzzletype == 5)
-            {
-                PuzzleCheck();
-                puzzle_time = 90;
-                nn = 25;
-            }
-            PuzzleNumber = new int[nn];
-            for (int pp = 0; pp < nn; pp++)
-            { 
-                x = UnityEngine.Random.Range(1, nn+1);
-                for (int j = 0; j < nn; j++)
-                {
-                    if (PuzzleNumber[j] == null)
-                    {
-                        break;
-                    }
-                    while (x == PuzzleNumber[j])
-                    {
-                        x = UnityEngine.Random.Range(1, nn+1);
-                        j = 0;
-                        continue;
-                    }
-
-                }
-                PuzzleNumber[pp] = x;
-                //print("隨機:" + PuzzleNumber[pp]);
-            }
-        }
+        
         GameObject.Find("Canvas/PuzzleTime").GetComponent<Text>().text = "Puzzle Time:"+puzzle_time;
     }
 
     public void Update()
     {
-        //GameObject.Find("Canvas/GameContent/EnglishQ/Text").GetComponent<Text>().text = EQ;
+        
     }
     int failcheck = 0;
     
