@@ -753,7 +753,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1653458833}
         m_TargetAssemblyTypeName: StageData, Assembly-CSharp
         m_MethodName: PushButtom4
         m_Mode: 1
@@ -2977,7 +2977,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1653458833}
         m_TargetAssemblyTypeName: StageData, Assembly-CSharp
         m_MethodName: PushButtom6
         m_Mode: 1
@@ -3153,7 +3153,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1653458833}
         m_TargetAssemblyTypeName: StageData, Assembly-CSharp
         m_MethodName: PushButtom5
         m_Mode: 1
@@ -3888,7 +3888,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1653458833}
         m_TargetAssemblyTypeName: StageData, Assembly-CSharp
         m_MethodName: PushButtom1
         m_Mode: 1
@@ -5036,7 +5036,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1653458833}
         m_TargetAssemblyTypeName: StageData, Assembly-CSharp
         m_MethodName: PushButtom2
         m_Mode: 1
@@ -5291,7 +5291,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1653458833}
         m_TargetAssemblyTypeName: StageData, Assembly-CSharp
         m_MethodName: PushButtom3
         m_Mode: 1
@@ -6090,7 +6090,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1653458833}
         m_TargetAssemblyTypeName: StageData, Assembly-CSharp
         m_MethodName: Re
         m_Mode: 1
@@ -6319,7 +6319,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1653458830}
-  - component: {fileID: 1653458831}
+  - component: {fileID: 1653458833}
   - component: {fileID: 1653458832}
   m_Layer: 5
   m_Name: GameContent
@@ -6352,51 +6352,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.00017836, y: 0.91509}
   m_SizeDelta: {x: 1280.0002, y: 785.02637}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1653458831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1653458829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80e1a57fa2789f740bbbec6dc22bbfc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time_int: 90
-  Qtime_int: 10
-  time_UI: {fileID: 477099627}
-  Qtime_UI: {fileID: 846957831}
-  Option1: ' '
-  Option2: ' '
-  Option3: ' '
-  Option4: ' '
-  Option5: ' '
-  Option6: ' '
-  Option7: ' '
-  Option8: ' '
-  data: {fileID: 4900000, guid: 7515aa5f333a9de4497782dc5a76efe1, type: 3}
-  record: {fileID: 0}
-  lineArray: []
-  Panel: {fileID: 827651269}
-  Panel2: {fileID: 580941110}
-  Panel3: {fileID: 533097753}
-  QuestionPanel: {fileID: 235273273}
-  DateTimeText: 
-  record1: 
-  record2: 
-  record3: 
-  path: 
-  finishpath: 
-  puzzlepath: 
-  FinalAnswer: 
-  CHQ: 
-  nn: 0
-  WrongTimes: 0
-  FinishPuzzle: []
-  finish: 
-  NumPuzzle: 0
 --- !u!114 &1653458832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6412,6 +6367,49 @@ MonoBehaviour:
   gotdata: {fileID: 4900000, guid: b11e4f9ef2d0d3b49bb3d192d6249428, type: 3}
   Array: []
   x: 0
+--- !u!114 &1653458833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653458829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e73bdde450834874cb417b87f313a1e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time_int: 90
+  Qtime_int: 10
+  time_UI: {fileID: 477099627}
+  Qtime_UI: {fileID: 723754825}
+  Option1: ' '
+  Option2: ' '
+  Option3: ' '
+  Option4: ' '
+  Option5: ' '
+  Option6: ' '
+  data: {fileID: 4900000, guid: 7515aa5f333a9de4497782dc5a76efe1, type: 3}
+  record: {fileID: 0}
+  lineArray: []
+  Panel: {fileID: 827651269}
+  Panel2: {fileID: 580941110}
+  Panel3: {fileID: 1600978766}
+  QuestionPanel: {fileID: 235273273}
+  DateTimeText: 
+  record1: 
+  record2: 
+  record3: 
+  path: 
+  finishpath: 
+  puzzlepath: 
+  FinalAnswer: 
+  CHQ: 
+  nn: 0
+  WrongTimes: 0
+  FinishPuzzle: []
+  finish: 
+  NumPuzzle: 0
 --- !u!1 &1656544214
 GameObject:
   m_ObjectHideFlags: 0
@@ -7084,9 +7082,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1653458833}
         m_TargetAssemblyTypeName: StageData, Assembly-CSharp
-        m_MethodName: EnterCheck
+        m_MethodName: NextCheck
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -776,6 +776,14 @@ public class StageData : MonoBehaviour
     public void PushButtom1()
     {
         string buttom1 = GameObject.Find("Canvas/GameContent/Pool/Option1/Text").GetComponent<Text>().text;
+        if(anscheck == 3&&ModeCheck == 1)
+        {
+            return;
+        }
+        if(anscheck == 2&&ModeCheck == 2)
+        {
+            return;
+        }
         GameObject.Find("Canvas/GameContent/Pool/Option1").SetActive(false);
         AnswerCheck(anscheck, score,buttom1);
     }
@@ -784,6 +792,14 @@ public class StageData : MonoBehaviour
     public void PushButtom2()
     {
         string buttom2 = GameObject.Find("Canvas/GameContent/Pool/Option2/Text").GetComponent<Text>().text;
+        if (anscheck == 3 && ModeCheck == 1)
+        {
+            return;
+        }
+        if (anscheck == 2 && ModeCheck == 2)
+        {
+            return;
+        }
         GameObject.Find("Canvas/GameContent/Pool/Option2").SetActive(false);
         AnswerCheck(anscheck, score, buttom2);
     }
@@ -792,6 +808,14 @@ public class StageData : MonoBehaviour
     public void PushButtom3()
     {
         string buttom3 = GameObject.Find("Canvas/GameContent/Pool/Option3/Text").GetComponent<Text>().text;
+        if (anscheck == 3 && ModeCheck == 1)
+        {
+            return;
+        }
+        if (anscheck == 2 && ModeCheck == 2)
+        {
+            return;
+        }
         GameObject.Find("Canvas/GameContent/Pool/Option3").SetActive(false);
         AnswerCheck(anscheck, score, buttom3);
     }
@@ -800,6 +824,14 @@ public class StageData : MonoBehaviour
     public void PushButtom4()
     {
         string buttom4 = GameObject.Find("Canvas/GameContent/Pool/Option4/Text").GetComponent<Text>().text;
+        if (anscheck == 3 && ModeCheck == 1)
+        {
+            return;
+        }
+        if (anscheck == 2 && ModeCheck == 2)
+        {
+            return;
+        }
         GameObject.Find("Canvas/GameContent/Pool/Option4").SetActive(false);
         AnswerCheck(anscheck, score, buttom4);
     }
@@ -808,6 +840,14 @@ public class StageData : MonoBehaviour
     public void PushButtom5()
     {
         string buttom5 = GameObject.Find("Canvas/GameContent/Pool/Option5/Text").GetComponent<Text>().text;
+        if (anscheck == 3 && ModeCheck == 1)
+        {
+            return;
+        }
+        if (anscheck == 2 && ModeCheck == 2)
+        {
+            return;
+        }
         GameObject.Find("Canvas/GameContent/Pool/Option5").SetActive(false);
         AnswerCheck(anscheck, score, buttom5);
     }
@@ -816,6 +856,14 @@ public class StageData : MonoBehaviour
     public void PushButtom6()
     {
         string buttom6 = GameObject.Find("Canvas/GameContent/Pool/Option6/Text").GetComponent<Text>().text;
+        if (anscheck == 3 && ModeCheck == 1)
+        {
+            return;
+        }
+        if (anscheck == 2 && ModeCheck == 2)
+        {
+            return;
+        }
         GameObject.Find("Canvas/GameContent/Pool/Option6").SetActive(false);
         AnswerCheck(anscheck, score, buttom6);
     }
