@@ -1302,7 +1302,15 @@ public class StageData_Hard : MonoBehaviour
     {
         if (Panel != null)
         {
-            Panel.SetActive(true);
+            if (anscheck == 3 && ModeCheck == 1)
+            {
+                Panel.SetActive(true);
+            }
+            if (anscheck == 2 && ModeCheck == 2)
+            {
+                Panel.SetActive(true);
+            }
+
         }
     }
     //過關顯示windows

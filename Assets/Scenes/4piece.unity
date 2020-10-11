@@ -193,7 +193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5B8C\u6210"
+  m_Text: Finish
 --- !u!222 &52372365
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1498,8 +1498,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 316.71, y: -169.71}
-  m_SizeDelta: {x: 67.78775, y: 54.589966}
+  m_AnchoredPosition: {x: -318.00012, y: -150}
+  m_SizeDelta: {x: 65, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &249383983
 MonoBehaviour:
@@ -1619,8 +1619,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316058948}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -540.603, y: -295.117, z: 100}
-  m_LocalScale: {x: 2.1147168, y: 2.1036632, z: 1.5228426}
+  m_LocalPosition: {x: -608.43, y: -294.53, z: 100}
+  m_LocalScale: {x: 2.6797664, y: 2.3635306, z: 1.5228426}
   m_Children: []
   m_Father: {fileID: 998863348}
   m_RootOrder: 0
@@ -2915,7 +2915,7 @@ RectTransform:
   m_GameObject: {fileID: 599131819}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 8.216667}
-  m_LocalScale: {x: 0.82166666, y: 0.82166666, z: 0.82166666}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 990591457}
   m_Father: {fileID: 402805949}
@@ -2923,8 +2923,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 305, y: 1.4552e-11}
-  m_SizeDelta: {x: 110, y: 75}
+  m_AnchoredPosition: {x: 300.5, y: 1.4552e-11}
+  m_SizeDelta: {x: 100, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &599131821
 MonoBehaviour:
@@ -3299,7 +3299,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 8, y: 39.1}
+  m_AnchoredPosition: {x: 8, y: 39.100006}
   m_SizeDelta: {x: -587.9613, y: -285.24695}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &728282098
@@ -3687,7 +3687,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0

@@ -31,7 +31,15 @@ public class PokemonGallery : MonoBehaviour
         lineArray = puzzle.Split(',');
         x = 1;
         y = 12;
-        Gallery();
+        for (int i = x; i <= y; i++)
+        {
+            if (x == 1)
+            {
+                GameObject.Find("Canvas/" + i).GetComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load<Sprite>("empty/Pokemon" + i);
+                GameObject.Find("Canvas/" + i).GetComponent<SpriteRenderer>().transform.localScale = new Vector3(28.0148f, 32.22427f, 72.03652f);
+            }
+        }
+            Gallery();
     }
     public void Update()
     {
@@ -75,14 +83,18 @@ public class PokemonGallery : MonoBehaviour
     public int page = 0;
     public void NextButton()
     {
-        if (y > 312)
-        {
-            return;
-        }
+        
         x = x + 12;
         page = page + x;
         y = y + 12;
+        
         n += 1;
+        if (y >= 312)
+        {
+            x = 1;
+            y = 12;
+            n = 0;
+        }
         for (int i=1;i<=12;i++)
         {
             GameObject.Find("Canvas/Button/" + i).SetActive(false);
