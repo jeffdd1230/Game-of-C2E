@@ -63,8 +63,4 @@ public class Speak : MonoBehaviour
     {
         StartCoroutine(DownloadAndPlay());
     }
-    //public void button1()
-    //{
-    //    StartCoroutine(DownloadAndPlay());
-    //}
 }
