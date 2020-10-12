@@ -108,7 +108,7 @@ public class DragAndDrop : MonoBehaviour
     public void OpenPanel2()
     {
         Panel2.SetActive(true);
-        GameObject.Find("Canvas2/next").SetActive(false);
+        GameObject.Find("Canvas/next").SetActive(false);
         GameObject.Find("finishpanel").GetComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load<Sprite>("original/Pokemon" + Puzzle.x);
         GameObject.Find("finishpanel").GetComponent<SpriteRenderer>().transform.localScale = new Vector3(2.065949f, 1.776987f, 1);
     }
