@@ -62,6 +62,7 @@ public class StageData : MonoBehaviour
     //產生英文題目與其備份
     string EQ = " ";
     string EQ_Re = " ";
+    public int Re_Check = 0;
 
     //產生紀錄用時間以及答題記錄
     public string DateTimeText;
@@ -1111,6 +1112,10 @@ public class StageData : MonoBehaviour
     }
     public void Re()
     {
+        if (Re_Check == 1)
+        {
+            return;
+        }
         //重置答案與分數
         anscheck = 0;
         score = 0;
@@ -1187,6 +1192,7 @@ public class StageData : MonoBehaviour
     }
     public void NextCheck()
     {
+        Re_Check = 1;    
         EnterCheck();
     }
     //過關顯示windows
@@ -1194,7 +1200,7 @@ public class StageData : MonoBehaviour
     {
 
         if (Panel != null)
-        {            
+        {
             Panel.SetActive(true);
             GameObject.Find("Canvas/Next/answer2").GetComponent<Text>().text = FinalAnswer;
         }

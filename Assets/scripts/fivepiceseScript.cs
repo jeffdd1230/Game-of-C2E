@@ -15,7 +15,7 @@ public class fivepiceseScript : MonoBehaviour
     {
         RightPosition = transform.position;
         transform.position = new Vector3(Random.Range(-2.5f, 5f), Random.Range(4f, -1.5f));
-        if (StageData.puzzlecheck != 0)
+        if (StageLoad.Stagetype == 1 && StageData.puzzlecheck != 0)
         {
             for (int i = 0; i < 25; i++)
             {
@@ -27,7 +27,23 @@ public class fivepiceseScript : MonoBehaviour
                 }
             }
         }
-        if (StageData.puzzlecheck == 25)
+        if (StageLoad.Stagetype == 2 && StageData_Hard.puzzlecheck != 0)
+        {
+            for (int i = 0; i < 25; i++)
+            {
+                if (piecename[i] == this.gameObject.name)
+                {
+                    this.gameObject.transform.position = RightPosition;
+                    InRightPosition = true;
+                    GetComponent<SortingGroup>().sortingOrder = 0;
+                }
+            }
+        }
+        if (StageLoad.Stagetype == 1&&StageData.puzzlecheck == 25)
+        {
+            GameObject.Find("Canvas/next").SetActive(false);
+        }
+        if (StageLoad.Stagetype == 2 && StageData_Hard.puzzlecheck == 25)
         {
             GameObject.Find("Canvas/next").SetActive(false);
         }

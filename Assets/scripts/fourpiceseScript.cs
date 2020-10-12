@@ -17,7 +17,7 @@ public class fourpiceseScript : MonoBehaviour
         //GameObject.Find("pieces_0/puzzle") = image1;
         RightPosition = transform.position;
         transform.position = new Vector3(Random.Range(-7.5f, 0f), Random.Range(1f, 3.5f));
-        if (StageData.puzzlecheck != 0)
+        if (StageLoad.Stagetype == 1 && StageData.puzzlecheck != 0)
         {
             for (int i = 0; i < 16; i++)
             {
@@ -29,7 +29,23 @@ public class fourpiceseScript : MonoBehaviour
                 }
             }
         }
-        if (StageData.puzzlecheck == 16)
+        if (StageLoad.Stagetype == 2 && StageData_Hard.puzzlecheck != 0)
+        {
+            for (int i = 0; i < 16; i++)
+            {
+                if (piecename[i] == this.gameObject.name)
+                {
+                    this.gameObject.transform.position = RightPosition;
+                    InRightPosition = true;
+                    GetComponent<SortingGroup>().sortingOrder = 0;
+                }
+            }
+        }
+        if (StageLoad.Stagetype == 1&&StageData.puzzlecheck == 16)
+        {
+            GameObject.Find("Canvas/next").SetActive(false);
+        }
+        if (StageLoad.Stagetype == 2 && StageData_Hard.puzzlecheck == 16)
         {
             GameObject.Find("Canvas/next").SetActive(false);
         }

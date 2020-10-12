@@ -16,7 +16,7 @@ public class piceseScript : MonoBehaviour
         //GameObject.Find("pieces_0/puzzle") = image1;
         RightPosition = transform.position;
         transform.position = new Vector3(Random.Range(11f, 18f), Random.Range(2.5f, -7));
-        if (StageData.puzzlecheck != 0)
+        if (StageLoad.Stagetype == 1 && StageData.puzzlecheck != 0)
         {
             for (int i = 0; i < 9; i++)
             {
@@ -28,11 +28,26 @@ public class piceseScript : MonoBehaviour
                 }
             }
         }
-        if (StageData.puzzlecheck==9)
+        if (StageLoad.Stagetype == 2 && StageData_Hard.puzzlecheck != 0)
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                if (piecename[i] == this.gameObject.name)
+                {
+                    this.gameObject.transform.position = RightPosition;
+                    InRightPosition = true;
+                    GetComponent<SortingGroup>().sortingOrder = 0;
+                }
+            }
+        }
+        if (StageLoad.Stagetype == 1 && StageData.puzzlecheck==9)
         {
             GameObject.Find("Canvas/next").SetActive(false);
         }
-        
+        if (StageLoad.Stagetype == 2 && StageData_Hard.puzzlecheck == 9)
+        {
+            GameObject.Find("Canvas/next").SetActive(false);
+        }
     }
     
     public void Update()

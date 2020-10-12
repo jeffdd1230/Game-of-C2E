@@ -64,6 +64,7 @@ public class StageData_Hard : MonoBehaviour
     //產生英文題目與其備份
     string EQ = " ";
     string EQ_Re = " ";
+    public int Re_Check = 0;
 
     //產生紀錄用時間以及答題記錄
     public string DateTimeText;
@@ -845,7 +846,7 @@ public class StageData_Hard : MonoBehaviour
             File.WriteAllText(puzzlepath, "0");
         }
         //顯示目前所得拼圖數
-        GameObject.Find("Canvas/Level").GetComponent<Text>().text = "Got " + StageData.puzzlecheck.ToString() + " puzzles";
+        GameObject.Find("Canvas/Level").GetComponent<Text>().text = "Got " + StageData_Hard.puzzlecheck.ToString() + " puzzles";
         //初始設定拼圖塊數以及拼圖時間
         
         GameObject.Find("Canvas/PuzzleTime").GetComponent<Text>().text = "Puzzle Time:"+puzzle_time;
@@ -1099,7 +1100,7 @@ public class StageData_Hard : MonoBehaviour
         if (ModeCheck == 1 && anscheck == 3 && score == 300)
         {
             puzzlecheck += 1;
-            GameObject.Find("Canvas/Level").GetComponent<Text>().text = "Got " + StageData.puzzlecheck.ToString() + " puzzles";
+            GameObject.Find("Canvas/Level").GetComponent<Text>().text = "Got " + StageData_Hard.puzzlecheck.ToString() + " puzzles";
             if (puzzlesetting.puzzletype == 3)
             {
                 if (puzzlecheck == 9)
@@ -1140,7 +1141,7 @@ public class StageData_Hard : MonoBehaviour
             puzzlecheck += 1;
             print("現在模式為:" + ModeCheck);
             print("最終分數:" + anscheck + "目前anscheck:" + score);
-            GameObject.Find("Canvas/Level").GetComponent<Text>().text = "Got " + StageData.puzzlecheck.ToString() + " puzzles";
+            GameObject.Find("Canvas/Level").GetComponent<Text>().text = "Got " + StageData_Hard.puzzlecheck.ToString() + " puzzles";
             //確認是否開啟拼圖視窗
             if (puzzlesetting.puzzletype==3)
             {
@@ -1219,6 +1220,10 @@ public class StageData_Hard : MonoBehaviour
     }
     public void Re()
     {
+        if(Re_Check == 1)
+        {
+            return;
+        }
         //重置答案與分數
         anscheck = 0;
         score = 0;
@@ -1298,14 +1303,17 @@ public class StageData_Hard : MonoBehaviour
     }
     public void NextCheck()
     {
+        Re_Check = 1;
         EnterCheck();
     }
+    
     //過關顯示windows
     public void OpenPanel()
     {
 
         if (Panel != null)
-        {            
+        {
+           
             Panel.SetActive(true);
             GameObject.Find("Canvas/Next/answer2").GetComponent<Text>().text = FinalAnswer;
         }
