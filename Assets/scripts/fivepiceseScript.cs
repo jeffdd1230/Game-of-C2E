@@ -13,6 +13,14 @@ public class fivepiceseScript : MonoBehaviour
     public int num = 0;
     void Start()
     {
+        if (StageData.puzzlecheck == 1)
+        {
+            string[] piecename = new string[25];
+        }
+        if (StageData_Hard.puzzlecheck == 1)
+        {
+            string[] piecename = new string[25];
+        }
         RightPosition = transform.position;
         transform.position = new Vector3(Random.Range(-2.5f, 5f), Random.Range(4f, -1.5f));
         if (StageLoad.Stagetype == 1 && StageData.puzzlecheck != 0)

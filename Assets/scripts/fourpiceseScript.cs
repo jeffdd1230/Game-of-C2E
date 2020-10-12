@@ -14,9 +14,18 @@ public class fourpiceseScript : MonoBehaviour
     public int num = 0;
     public void Start()
     {
+        if (StageData.puzzlecheck == 1)
+        {
+            string[] piecename = new string[16];
+        }
+        if (StageData_Hard.puzzlecheck == 1)
+        {
+            string[] piecename = new string[16];
+        }
+
         //GameObject.Find("pieces_0/puzzle") = image1;
         RightPosition = transform.position;
-        transform.position = new Vector3(Random.Range(-7.5f, 0f), Random.Range(1f, 3.5f));
+        transform.position = new Vector3(Random.Range(12.79f, 20.16f), Random.Range(1f, 3.5f));
         if (StageLoad.Stagetype == 1 && StageData.puzzlecheck != 0)
         {
             for (int i = 0; i < 16; i++)

@@ -13,6 +13,14 @@ public class piceseScript : MonoBehaviour
     public int num = 0;
     public void Start()
     {
+        if (StageData.puzzlecheck == 1)
+        {
+            string[] piecename = new string[9];
+        }
+        if (StageData_Hard.puzzlecheck == 1)
+        {
+            string[] piecename = new string[9];
+        }
         //GameObject.Find("pieces_0/puzzle") = image1;
         RightPosition = transform.position;
         transform.position = new Vector3(Random.Range(11f, 18f), Random.Range(2.5f, -7));
