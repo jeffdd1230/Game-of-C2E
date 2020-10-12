@@ -17,16 +17,29 @@ public class fiveDragAndDrop : MonoBehaviour
     void timer()
     {
 
-        StageData.puzzle_time -= 1;
-
-        time_UI.text = StageData.puzzle_time + "";
-
-        if (StageData.puzzle_time == 0)
+        if (StageLoad.Stagetype == 1)
         {
+            StageData.puzzle_time -= 1;
+            time_UI.text = StageData.puzzle_time + "";
+            if (StageData.puzzle_time == 0)
+            {
 
-            time_UI.text = "time\nup";
-            OpenFailure();
-            CancelInvoke("timer");
+                time_UI.text = "time up";
+                OpenFailure();
+                CancelInvoke("timer");
+            }
+        }
+        if (StageLoad.Stagetype == 2)
+        {
+            StageData_Hard.puzzle_time -= 1;
+            time_UI.text = StageData_Hard.puzzle_time + "";
+            if (StageData_Hard.puzzle_time == 0)
+            {
+
+                time_UI.text = "time up";
+                OpenFailure();
+                CancelInvoke("timer");
+            }
         }
 
     }
@@ -72,7 +85,14 @@ public class fiveDragAndDrop : MonoBehaviour
         string path = Application.persistentDataPath + "/FinishPuzzle.txt";
         File.AppendAllText(path, ","+fivepuzzle.x.ToString());
         fivepiceseScript.x = 0;
-        StageData.puzzlecheck = 0;
+        if (StageLoad.Stagetype == 1)
+        {
+            StageData.puzzlecheck = 0;
+        }
+        if (StageLoad.Stagetype == 2)
+        {
+            StageData_Hard.puzzlecheck = 0;
+        }
         fivepiceseScript.piecename = new string[25];
         Panel.SetActive(true);
         OpenPanel2();

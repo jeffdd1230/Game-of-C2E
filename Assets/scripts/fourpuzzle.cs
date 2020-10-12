@@ -12,13 +12,22 @@ public class fourpuzzle : MonoBehaviour
     public string puzzle;
     public string[] lineArray;
     public static int x;
-
+    public int puzzletype;
     public void Start()
     {
         string puzzlepath = Application.persistentDataPath + "/puzzle.txt";
         puzzle = File.ReadAllText(puzzlepath);
         int k = 1;
         int check = 0;
+        if (StageLoad.Stagetype == 1)
+        {
+            puzzletype = StageData.puzzlecheck;
+        }
+        if (StageLoad.Stagetype == 2)
+        {
+            puzzletype = StageData_Hard.puzzlecheck;
+        }
+
         x = int.Parse(puzzle);
         for (int i = 1; i <= 16; i++)
         {
@@ -27,18 +36,37 @@ public class fourpuzzle : MonoBehaviour
         }
         for (int i = 1; i <= 16; i++)
         {
-            if (StageData.PuzzleNumber[i - 1] != null)
+            if (StageLoad.Stagetype == 1)
             {
-                for (int j = 0; j < StageData.puzzlecheck; j++)
+                if (StageData.PuzzleNumber[i - 1] != null)
                 {
-                    if (i == StageData.PuzzleNumber[j])
+                    for (int j = 0; j < StageData.puzzlecheck; j++)
                     {
-                        print("要給的拼圖:" + i);
-                        check = 1;
-                        break;
+                        if (i == StageData.PuzzleNumber[j])
+                        {
+                            print("要給的拼圖:" + i);
+                            check = 1;
+                            break;
+                        }
                     }
                 }
             }
+            if (StageLoad.Stagetype == 2)
+            {
+                if (StageData_Hard.PuzzleNumber[i - 1] != null)
+                {
+                    for (int j = 0; j < puzzletype; j++)
+                    {
+                        if (i == StageData_Hard.PuzzleNumber[j])
+                        {
+                            print("要給的拼圖:" + i);
+                            check = 1;
+                            break;
+                        }
+                    }
+                }
+            }
+            
             if (check == 1)
             {
                 print("不關閉");

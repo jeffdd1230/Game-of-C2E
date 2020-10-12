@@ -11,6 +11,7 @@ public class Puzzle : MonoBehaviour
     public string puzzle;
     public string[] lineArray;
     public static int x;
+    public int puzzletype;
     // Start is called before the first frame update
     public void Start()
     {
@@ -18,6 +19,16 @@ public class Puzzle : MonoBehaviour
         puzzle = File.ReadAllText(puzzlepath);
         int k = 1;
         int check = 0;
+        
+        if(StageLoad.Stagetype == 1)
+        {
+            puzzletype = StageData.puzzlecheck;
+        }
+        if (StageLoad.Stagetype == 2)
+        {
+            puzzletype = StageData_Hard.puzzlecheck;
+        }
+
         x = int.Parse(puzzle);
         for (int i = 1; i <= 9; i++)
         {
@@ -26,18 +37,37 @@ public class Puzzle : MonoBehaviour
         }
         for (int i = 1; i <= 9; i++)
         {
-            if (StageData.PuzzleNumber[i-1] != null)
-            { 
-                for (int j = 0; j <StageData.puzzlecheck; j++)
+            if(StageLoad.Stagetype == 1)
+            {
+                if (StageData.PuzzleNumber[i - 1] != null)
                 {
-                    if (i == StageData.PuzzleNumber[j])
+                    for (int j = 0; j < puzzletype; j++)
                     {
-                        print("要給的拼圖:" + i);
-                        check = 1;
-                        break;
+                        if (i == StageData.PuzzleNumber[j])
+                        {
+                            print("要給的拼圖:" + i);
+                            check = 1;
+                            break;
+                        }
                     }
                 }
             }
+            if (StageLoad.Stagetype == 2)
+            {
+                if (StageData_Hard.PuzzleNumber[i - 1] != null)
+                {
+                    for (int j = 0; j < puzzletype; j++)
+                    {
+                        if (i == StageData_Hard.PuzzleNumber[j])
+                        {
+                            print("要給的拼圖:" + i);
+                            check = 1;
+                            break;
+                        }
+                    }
+                }
+            }
+            
             if (check == 1)
             {
                 check = 0;
@@ -46,7 +76,7 @@ public class Puzzle : MonoBehaviour
             else
             {
                 print("隱藏");
-                print("目前答題狀態:"+ StageData.puzzlecheck);
+                print("目前答題狀態:"+ puzzletype);
                 GameObject.Find(i.ToString()).SetActive(false);
                 continue;
             }            

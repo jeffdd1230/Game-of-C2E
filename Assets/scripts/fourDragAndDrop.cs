@@ -16,16 +16,29 @@ public class fourDragAndDrop : MonoBehaviour
     void timer()
     {
 
-        StageData.puzzle_time -= 1;
-
-        time_UI.text = StageData.puzzle_time + "";
-
-        if (StageData.puzzle_time == 0)
+        if (StageLoad.Stagetype == 1)
         {
+            StageData.puzzle_time -= 1;
+            time_UI.text = StageData.puzzle_time + "";
+            if (StageData.puzzle_time == 0)
+            {
 
-            time_UI.text = "time up";
-            OpenFailure();
-            CancelInvoke("timer");
+                time_UI.text = "time up";
+                OpenFailure();
+                CancelInvoke("timer");
+            }
+        }
+        if (StageLoad.Stagetype == 2)
+        {
+            StageData_Hard.puzzle_time -= 1;
+            time_UI.text = StageData_Hard.puzzle_time + "";
+            if (StageData_Hard.puzzle_time == 0)
+            {
+
+                time_UI.text = "time up";
+                OpenFailure();
+                CancelInvoke("timer");
+            }
         }
 
     }
@@ -70,7 +83,14 @@ public class fourDragAndDrop : MonoBehaviour
         string path = Application.persistentDataPath + "/FinishPuzzle.txt";
         File.AppendAllText(path, ","+fourpuzzle.x.ToString());
         fourpiceseScript.x = 0;
-        StageData.puzzlecheck = 0;
+        if (StageLoad.Stagetype == 1)
+        {
+            StageData.puzzlecheck = 0;
+        }
+        if (StageLoad.Stagetype == 2)
+        {
+            StageData_Hard.puzzlecheck = 0;
+        }
         fourpiceseScript.piecename = new string[16];
         Panel.SetActive(true);
         OpenPanel2();
