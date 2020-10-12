@@ -2500,6 +2500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puzzle: 
   lineArray: []
+  puzzletype: 0
 --- !u!1 &525493968
 GameObject:
   m_ObjectHideFlags: 0
@@ -3240,7 +3241,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -3251,7 +3252,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u62FC\u5716\u5931\u6557"
+  m_Text: Puzzle Failure...
 --- !u!222 &597127945
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6469,7 +6470,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u958B\u59CB\u7B54\u984C"
+  m_Text: Got to Stage
 --- !u!222 &1214767316
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8108,8 +8109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 431.52, y: 278.59}
-  m_SizeDelta: {x: 166.95514, y: 35.499985}
+  m_AnchoredPosition: {x: 363.56, y: 275.98}
+  m_SizeDelta: {x: 302.8658, y: 40.728806}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1725231787
 MonoBehaviour:
@@ -8144,7 +8145,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5012\u6578\u8A08\u6642:"
+  m_Text: 'Puzzle counter:'
 --- !u!222 &1725231788
 CanvasRenderer:
   m_ObjectHideFlags: 0

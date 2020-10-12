@@ -112,8 +112,7 @@ public class StageData : MonoBehaviour
 
         if (time_int <= 0)
         {
-
-            time_UI.text = "time up";
+            time_UI.text = "0";
             OpenPanel2();
             CancelInvoke("timer");
         }
@@ -134,7 +133,7 @@ public class StageData : MonoBehaviour
         if (Qtime_int <= 0)
         {
 
-            Qtime_UI.text = "time up";
+            Qtime_UI.text = "0";
             CloseQuestionPanel();
             CancelInvoke("Qtimer");
         }

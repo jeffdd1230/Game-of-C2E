@@ -2260,8 +2260,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 439, y: 281.34}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 402.08, y: 280.69}
+  m_SizeDelta: {x: 233.836, y: 31.307209}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &466654028
 MonoBehaviour:
@@ -2296,7 +2296,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5012\u6578\u8A08\u6642:"
+  m_Text: 'Puzzle counter:'
 --- !u!222 &466654029
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2681,6 +2681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puzzle: 
   lineArray: []
+  puzzletype: 0
 --- !u!1 &579733685
 GameObject:
   m_ObjectHideFlags: 0
@@ -4267,7 +4268,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u62FC\u5716\u5931\u6557"
+  m_Text: Puzzle Failure...
 --- !u!222 &1100914083
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4956,7 +4957,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u958B\u59CB\u7B54\u984C"
+  m_Text: Go to Stage
 --- !u!222 &1284926877
 CanvasRenderer:
   m_ObjectHideFlags: 0
