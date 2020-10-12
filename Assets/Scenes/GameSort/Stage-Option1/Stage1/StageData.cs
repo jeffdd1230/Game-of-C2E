@@ -991,7 +991,7 @@ public class StageData : MonoBehaviour
         //最終分數確認是否通關
         if (ModeCheck == 1 && anscheck == 3 && score == 300)
         {
-            puzzlecheck += 1;
+            puzzlecheck += 9;
             GameObject.Find("Canvas/Level").GetComponent<Text>().text = "Got " + StageData.puzzlecheck.ToString() + " puzzles";
             if (puzzlesetting.puzzletype == 3)
             {
@@ -1030,7 +1030,7 @@ public class StageData : MonoBehaviour
         }
         if (ModeCheck == 2 && anscheck == 2 && score == 200)
         {
-            puzzlecheck += 1;
+            puzzlecheck += 9;
             print("現在模式為:" + ModeCheck);
             print("最終分數:" + anscheck + "目前anscheck:" + score);
             GameObject.Find("Canvas/Level").GetComponent<Text>().text = "Got " + StageData.puzzlecheck.ToString() + " puzzles";

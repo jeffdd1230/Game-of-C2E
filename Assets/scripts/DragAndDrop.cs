@@ -94,24 +94,23 @@ public class DragAndDrop : MonoBehaviour
             StageData.puzzlecheck = 0;
             piceseScript.piecename = new string[9];
             Panel.SetActive(true);
-            OpenPanel2();
         }
         if (StageLoad.Stagetype == 2)
         {
             StageData_Hard.puzzlecheck = 0;
             piceseScript.piecename = new string[9];
             Panel.SetActive(true);
-            OpenPanel2();
         }
         
     }
     public void OpenPanel2()
     {
         Panel2.SetActive(true);
+        GameObject.Find("finishpanel").GetComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load<Sprite>("original/Pokemon" + Puzzle.x);
+        GameObject.Find("finishpanel").GetComponent<SpriteRenderer>().transform.localScale = new Vector3(2.065949f, 1.776987f, 1);       
         GameObject.Find("Canvas/next").SetActive(false);
         piceseScript.x = 0;
-        GameObject.Find("finishpanel").GetComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load<Sprite>("original/Pokemon" + Puzzle.x);
-        GameObject.Find("finishpanel").GetComponent<SpriteRenderer>().transform.localScale = new Vector3(2.065949f, 1.776987f, 1);
+        
     }
     public void OpenFailure()
     {
