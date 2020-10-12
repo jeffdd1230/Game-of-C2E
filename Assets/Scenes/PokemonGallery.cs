@@ -27,6 +27,10 @@ public class PokemonGallery : MonoBehaviour
         n = 0;
         panel = 0;
         string puzzlepath = Application.persistentDataPath + "/FinishPuzzle.txt";
+        if (!File.Exists(puzzlepath))
+        {
+            File.WriteAllText(puzzlepath, "0");
+        }
         puzzle = File.ReadAllText(puzzlepath);
         lineArray = puzzle.Split(',');
         x = 1;

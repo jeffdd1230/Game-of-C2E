@@ -193,7 +193,7 @@ public class StageData : MonoBehaviour
 
                 }
                 PuzzleNumber[pp] = x;
-                //print("隨機:" + PuzzleNumber[pp]);
+                print("隨機:" + PuzzleNumber[pp]);
             }
         }
 
@@ -784,6 +784,7 @@ public class StageData : MonoBehaviour
         {
             return;
         }
+        print("目前anscheck:" + anscheck);
         GameObject.Find("Canvas/GameContent/Pool/Option1").SetActive(false);
         AnswerCheck(anscheck, score,buttom1);
     }
@@ -800,6 +801,7 @@ public class StageData : MonoBehaviour
         {
             return;
         }
+        print("目前anscheck:" + anscheck);
         GameObject.Find("Canvas/GameContent/Pool/Option2").SetActive(false);
         AnswerCheck(anscheck, score, buttom2);
     }
@@ -816,6 +818,7 @@ public class StageData : MonoBehaviour
         {
             return;
         }
+        print("目前anscheck:" + anscheck);
         GameObject.Find("Canvas/GameContent/Pool/Option3").SetActive(false);
         AnswerCheck(anscheck, score, buttom3);
     }
@@ -832,6 +835,7 @@ public class StageData : MonoBehaviour
         {
             return;
         }
+        print("目前anscheck:" + anscheck);
         GameObject.Find("Canvas/GameContent/Pool/Option4").SetActive(false);
         AnswerCheck(anscheck, score, buttom4);
     }
@@ -848,6 +852,7 @@ public class StageData : MonoBehaviour
         {
             return;
         }
+        print("目前anscheck:" + anscheck);
         GameObject.Find("Canvas/GameContent/Pool/Option5").SetActive(false);
         AnswerCheck(anscheck, score, buttom5);
     }
@@ -864,6 +869,7 @@ public class StageData : MonoBehaviour
         {
             return;
         }
+        print("目前anscheck:" + anscheck);
         GameObject.Find("Canvas/GameContent/Pool/Option6").SetActive(false);
         AnswerCheck(anscheck, score, buttom6);
     }
@@ -1017,8 +1023,7 @@ public class StageData : MonoBehaviour
                     return;
                 }
             }
-            print("答對");
-            OpenPanel();
+            print("答對");           
             CancelInvoke("timer");
             return;
         }
@@ -1061,7 +1066,6 @@ public class StageData : MonoBehaviour
             }
 
             print("答對");
-            OpenPanel();
             CancelInvoke("timer");
             return;
         }
@@ -1182,15 +1186,16 @@ public class StageData : MonoBehaviour
     }
     public void NextCheck()
     {
+        EnterCheck();
         if (Panel != null)
         {
             if (anscheck == 3 && ModeCheck == 1)
             {
-                Panel.SetActive(true);
+                OpenPanel();
             }
             if(anscheck ==2 && ModeCheck == 2)
             {
-                Panel.SetActive(true);
+                OpenPanel();
             }
             
         }

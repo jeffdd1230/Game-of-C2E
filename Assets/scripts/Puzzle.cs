@@ -45,6 +45,8 @@ public class Puzzle : MonoBehaviour
             }
             else
             {
+                print("隱藏");
+                print("目前答題狀態:"+ StageData.puzzlecheck);
                 GameObject.Find(i.ToString()).SetActive(false);
                 continue;
             }            

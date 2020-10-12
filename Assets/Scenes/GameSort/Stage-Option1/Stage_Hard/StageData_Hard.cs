@@ -1300,15 +1300,16 @@ public class StageData_Hard : MonoBehaviour
     }
     public void NextCheck()
     {
+        EnterCheck();
         if (Panel != null)
         {
             if (anscheck == 3 && ModeCheck == 1)
             {
-                Panel.SetActive(true);
+                OpenPanel();
             }
             if (anscheck == 2 && ModeCheck == 2)
             {
-                Panel.SetActive(true);
+                OpenPanel();
             }
 
         }
