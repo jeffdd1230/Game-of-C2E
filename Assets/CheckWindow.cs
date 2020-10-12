@@ -22,6 +22,7 @@ public class CheckWindow : MonoBehaviour
     public void Back()
     {
         StageData.puzzlecheck = 0;
+        StageData_Hard.puzzlecheck = 0;
         print("1");
         SceneManager.LoadScene("LevelOption");
     }
