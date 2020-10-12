@@ -25,10 +25,14 @@ public class NextStage : MonoBehaviour
     {
         if(StageLoad.Stagetype == 1)
         {
+            StageData_Hard.puzzlecheck = 0;
+            StageData.puzzlecheck = 0;
             SceneManager.LoadScene("Stage1");
         }
         if (StageLoad.Stagetype == 2)
         {
+            StageData_Hard.puzzlecheck = 0;
+            StageData.puzzlecheck = 0;
             SceneManager.LoadScene("Stage_Hard");
         }
 

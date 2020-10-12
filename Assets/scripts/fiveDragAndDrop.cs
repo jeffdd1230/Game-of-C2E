@@ -88,14 +88,18 @@ public class fiveDragAndDrop : MonoBehaviour
         if (StageLoad.Stagetype == 1)
         {
             StageData.puzzlecheck = 0;
+            fivepiceseScript.piecename = new string[25];
+            Panel.SetActive(true);
+            OpenPanel2();
         }
         if (StageLoad.Stagetype == 2)
         {
             StageData_Hard.puzzlecheck = 0;
+            fivepiceseScript.piecename = new string[25];
+            Panel.SetActive(true);
+            OpenPanel2();
         }
-        fivepiceseScript.piecename = new string[25];
-        Panel.SetActive(true);
-        OpenPanel2();
+        
     }
     public void OpenPanel2()
     {
