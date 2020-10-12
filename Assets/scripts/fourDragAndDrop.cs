@@ -88,24 +88,23 @@ public class fourDragAndDrop : MonoBehaviour
             StageData.puzzlecheck = 0;
             fourpiceseScript.piecename = new string[16];
             Panel.SetActive(true);
-            OpenPanel2();
         }
         if (StageLoad.Stagetype == 2)
         {
             StageData_Hard.puzzlecheck = 0;
             fourpiceseScript.piecename = new string[16];
             Panel.SetActive(true);
-            OpenPanel2();
         }
         
     }
     public void OpenPanel2()
     {
         Panel2.SetActive(true);
-        GameObject.Find("Canvas2/next").SetActive(false);
-        fourpiceseScript.x = 0;
         GameObject.Find("finishpanel").GetComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load<Sprite>("original/Pokemon" + fourpuzzle.x);
         GameObject.Find("finishpanel").GetComponent<SpriteRenderer>().transform.localScale = new Vector3(1.094954f, 0.985961f, 1);
+        GameObject.Find("Canvas2/next").SetActive(false);
+        fourpiceseScript.x = 0;
+        
     }
     public void OpenFailure()
     {
