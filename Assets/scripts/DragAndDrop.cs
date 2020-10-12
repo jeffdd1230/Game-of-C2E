@@ -28,7 +28,7 @@ public class DragAndDrop : MonoBehaviour
         {
             StageData.puzzle_time -= 1;
             time_UI.text = StageData.puzzle_time + "";
-            if (StageData.puzzle_time == 0)
+            if (StageData.puzzle_time <= 0)
             {
 
                 time_UI.text = "time up";
@@ -40,7 +40,7 @@ public class DragAndDrop : MonoBehaviour
         {
             StageData_Hard.puzzle_time -= 1;
             time_UI.text = StageData_Hard.puzzle_time + "";
-            if (StageData_Hard.puzzle_time == 0)
+            if (StageData_Hard.puzzle_time <= 0)
             {
 
                 time_UI.text = "time up";
