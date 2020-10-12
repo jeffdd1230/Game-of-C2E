@@ -103,6 +103,7 @@ public class fourDragAndDrop : MonoBehaviour
     {
         Panel2.SetActive(true);
         GameObject.Find("Canvas2/next").SetActive(false);
+        fourpiceseScript.x = 0;
         GameObject.Find("finishpanel").GetComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load<Sprite>("original/Pokemon" + fourpuzzle.x);
         GameObject.Find("finishpanel").GetComponent<SpriteRenderer>().transform.localScale = new Vector3(1.094954f, 0.985961f, 1);
     }
