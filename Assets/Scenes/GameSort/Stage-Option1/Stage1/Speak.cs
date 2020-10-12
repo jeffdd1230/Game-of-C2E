@@ -14,8 +14,15 @@ public class Speak : MonoBehaviour
     public static string status = "Stoping";
     public void Start()
     {
-        ch = StageData.speak;
-        if(GameOption.sound!=null&& GameOption.voice != null)
+        if(StageLoad.Stagetype == 1)
+        {
+            ch = StageData.speak;
+        }
+        if (StageLoad.Stagetype == 2)
+        {
+            ch = StageData_Hard.speak;
+        }
+        if (GameOption.sound!=null&& GameOption.voice != null)
         {
             sound = GameOption.sound;
             voice = GameOption.voice;

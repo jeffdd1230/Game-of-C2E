@@ -991,7 +991,7 @@ public class StageData : MonoBehaviour
         //最終分數確認是否通關
         if (ModeCheck == 1 && anscheck == 3 && score == 300)
         {
-            puzzlecheck += 3;
+            puzzlecheck += 1;
             GameObject.Find("Canvas/Level").GetComponent<Text>().text = "Got " + StageData.puzzlecheck.ToString() + " puzzles";
             if (puzzlesetting.puzzletype == 3)
             {
@@ -1025,11 +1025,12 @@ public class StageData : MonoBehaviour
             }
             print("答對");           
             CancelInvoke("timer");
+            OpenPanel();
             return;
         }
         if (ModeCheck == 2 && anscheck == 2 && score == 200)
         {
-            puzzlecheck += 3;
+            puzzlecheck += 1;
             print("現在模式為:" + ModeCheck);
             print("最終分數:" + anscheck + "目前anscheck:" + score);
             GameObject.Find("Canvas/Level").GetComponent<Text>().text = "Got " + StageData.puzzlecheck.ToString() + " puzzles";
@@ -1066,6 +1067,7 @@ public class StageData : MonoBehaviour
             }
 
             print("答對");
+            OpenPanel();
             CancelInvoke("timer");
             return;
         }
@@ -1187,18 +1189,6 @@ public class StageData : MonoBehaviour
     public void NextCheck()
     {
         EnterCheck();
-        if (Panel != null)
-        {
-            if (anscheck == 3 && ModeCheck == 1)
-            {
-                OpenPanel();
-            }
-            if(anscheck ==2 && ModeCheck == 2)
-            {
-                OpenPanel();
-            }
-            
-        }
     }
     //過關顯示windows
     public void OpenPanel()

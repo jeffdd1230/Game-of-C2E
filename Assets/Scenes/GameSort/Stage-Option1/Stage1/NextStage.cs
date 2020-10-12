@@ -23,7 +23,15 @@ public class NextStage : MonoBehaviour
     }
     public void Nextstage()
     {
-        SceneManager.LoadScene("Stage1");
+        if(StageLoad.Stagetype == 1)
+        {
+            SceneManager.LoadScene("Stage1");
+        }
+        if (StageLoad.Stagetype == 2)
+        {
+            SceneManager.LoadScene("Stage_Hard");
+        }
+
     }
     public void Back()
     {
