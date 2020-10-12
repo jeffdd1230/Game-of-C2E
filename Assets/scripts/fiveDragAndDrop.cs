@@ -104,6 +104,7 @@ public class fiveDragAndDrop : MonoBehaviour
     public void OpenPanel2()
     {
         Panel2.SetActive(true);
+        GameObject.Find("Canvas2/next").SetActive(false);
         GameObject.Find("finishpanel").GetComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load<Sprite>("original/Pokemon" + fivepuzzle.x);
         GameObject.Find("finishpanel").GetComponent<SpriteRenderer>().transform.localScale = new Vector3(1.176381f, 1.108506f, 1);
     }

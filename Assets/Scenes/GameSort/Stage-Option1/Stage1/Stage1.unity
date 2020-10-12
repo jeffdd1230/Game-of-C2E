@@ -456,6 +456,7 @@ MonoBehaviour:
   Panel2: {fileID: 0}
   Panel3: {fileID: 0}
   QuestionPanel: {fileID: 0}
+  Re_Check: 0
   DateTimeText: 
   record1: 
   record2: 
@@ -696,6 +697,7 @@ MonoBehaviour:
   Panel2: {fileID: 0}
   Panel3: {fileID: 0}
   QuestionPanel: {fileID: 0}
+  Re_Check: 0
   DateTimeText: 
   record1: 
   record2: 
@@ -2166,6 +2168,7 @@ MonoBehaviour:
   Panel2: {fileID: 0}
   Panel3: {fileID: 0}
   QuestionPanel: {fileID: 0}
+  Re_Check: 0
   DateTimeText: 
   record1: 
   record2: 
@@ -2920,6 +2923,7 @@ MonoBehaviour:
   Panel2: {fileID: 0}
   Panel3: {fileID: 0}
   QuestionPanel: {fileID: 0}
+  Re_Check: 0
   DateTimeText: 
   record1: 
   record2: 
@@ -3096,6 +3100,7 @@ MonoBehaviour:
   Panel2: {fileID: 0}
   Panel3: {fileID: 0}
   QuestionPanel: {fileID: 0}
+  Re_Check: 0
   DateTimeText: 
   record1: 
   record2: 
@@ -3831,6 +3836,7 @@ MonoBehaviour:
   Panel2: {fileID: 0}
   Panel3: {fileID: 0}
   QuestionPanel: {fileID: 0}
+  Re_Check: 0
   DateTimeText: 
   record1: 
   record2: 
@@ -4896,6 +4902,7 @@ MonoBehaviour:
   Panel2: {fileID: 0}
   Panel3: {fileID: 0}
   QuestionPanel: {fileID: 0}
+  Re_Check: 0
   DateTimeText: 
   record1: 
   record2: 
@@ -4979,6 +4986,7 @@ MonoBehaviour:
   Panel2: {fileID: 0}
   Panel3: {fileID: 0}
   QuestionPanel: {fileID: 0}
+  Re_Check: 0
   DateTimeText: 
   record1: 
   record2: 
@@ -5234,6 +5242,7 @@ MonoBehaviour:
   Panel2: {fileID: 0}
   Panel3: {fileID: 0}
   QuestionPanel: {fileID: 0}
+  Re_Check: 0
   DateTimeText: 
   record1: 
   record2: 
@@ -5745,6 +5754,7 @@ MonoBehaviour:
   Panel2: {fileID: 0}
   Panel3: {fileID: 0}
   QuestionPanel: {fileID: 0}
+  Re_Check: 0
   DateTimeText: 
   record1: 
   record2: 
@@ -6394,8 +6404,9 @@ MonoBehaviour:
   lineArray: []
   Panel: {fileID: 827651269}
   Panel2: {fileID: 580941110}
-  Panel3: {fileID: 1600978766}
+  Panel3: {fileID: 533097753}
   QuestionPanel: {fileID: 235273273}
+  Re_Check: 0
   DateTimeText: 
   record1: 
   record2: 
@@ -7330,6 +7341,7 @@ MonoBehaviour:
   Panel2: {fileID: 0}
   Panel3: {fileID: 0}
   QuestionPanel: {fileID: 0}
+  Re_Check: 0
   DateTimeText: 
   record1: 
   record2: 
