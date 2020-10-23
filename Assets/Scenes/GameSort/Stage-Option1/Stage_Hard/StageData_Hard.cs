@@ -43,8 +43,9 @@ public class StageData_Hard : MonoBehaviour
     //儲存本題答案
     string[] QuestionAns = new string[3];
     int[] q = new int[3];
+
     //產生確認此題為2ans類型或3ans類型
-    int ModeCheck;
+    public static int ModeCheck;
 
     //產生題號
     int x ;
@@ -96,7 +97,8 @@ public class StageData_Hard : MonoBehaviour
     //計算獲得拼圖數
     public void Start()
     {
-
+        ModeCheck = 0;
+        StageData.ModeCheck = 0;
         InvokeRepeating("timer", 1, 1);
         lineArray = data.text.Split("\r"[0]);
         Array = new string[lineArray.Length][];

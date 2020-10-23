@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.Text.RegularExpressions;
 using System;
 using System.IO;
+using UnityEngine.EventSystems;
 using System.Text;
 public class StageData : MonoBehaviour
 {
@@ -41,8 +42,9 @@ public class StageData : MonoBehaviour
     //儲存本題答案
     string[] QuestionAns = new string[3];
     int[] q = new int[3];
+
     //產生確認此題為2ans類型或3ans類型
-    int ModeCheck;
+    public static int ModeCheck;
 
     //產生題號
     int x ;
@@ -69,6 +71,8 @@ public class StageData : MonoBehaviour
     public string record1;
     public string record2;
     public string record3;
+
+
     //存檔路徑
     public string path;
     public string finishpath;
@@ -88,11 +92,14 @@ public class StageData : MonoBehaviour
     public int nn = 0;   //確認puzzle的類別,決定個數
 
 
+    //確認答案是否正確
+    
 
     //計算獲得拼圖數
     public void Start()
     {
-
+        ModeCheck = 0;
+        StageData_Hard.ModeCheck = 0;
         InvokeRepeating("timer", 1, 1);
         lineArray = data.text.Split("\r"[0]);
         Array = new string[lineArray.Length][];
@@ -200,10 +207,6 @@ public class StageData : MonoBehaviour
         //問題選擇(目前沒有隨機問題選擇)
         //題目從2開始
         x = UnityEngine.Random.Range(1, 200);
-        if (x == 113)
-        {
-            x = UnityEngine.Random.Range(1, 200);
-        }
 
 
         //Debug用
@@ -232,7 +235,7 @@ public class StageData : MonoBehaviour
         FinalAnswer = EQ;
         GameObject.Find("Canvas/GameContent/Debug").GetComponent<Text>().text = EQ;
         GameObject.Find("Canvas/DebugNum").GetComponent<Text>().text = DebugNum.ToString();
-        string Problem = Array[x][14];
+        string Problem = Array[x][15];
         int QuestionNum = 0;
         print(EQ);
 
@@ -245,7 +248,7 @@ public class StageData : MonoBehaviour
 
 
         //OP存入 T F,F,F ; T F,F,F,F ; T F,F,F,F..
-        string OP = Array[x][14];
+        string OP = Array[x][15];
         OP = OP.TrimEnd(';');
 
 
@@ -258,13 +261,21 @@ public class StageData : MonoBehaviour
         Cache = new string[OptionGroup.Length][];
         int num = 0;
         string[] P = new string[Answer.Length];
+
+
         for (int i = 0; i < OptionGroup.Length; i++)
         {
-            //Cache[0] 存入 T ; Cache[1]存入F,F,F
+            //Cache[i][0] 存入 T ; Cache[i][1]存入F,F,F
             Cache[i] = OptionGroup[i].Split(" "[0]);
+            string Got_Tmp = GameObject.Find("Canvas/GameContent").GetComponent<OtherData>().GotData();
+            string Got_Cache = Cache[i][1];
+            Got_Cache = Got_Cache.Replace("/", Got_Tmp);
+            Cache[i][1] = Got_Cache;
             //Answer 存入 T
             Answer[i] = Cache[i][0];
             string PhCache = Answer[i];
+
+
             //去除片語底線
             if (PhCache.Contains("_"))
             {
@@ -272,9 +283,12 @@ public class StageData : MonoBehaviour
                 Answer[i] = PhCache;
             }
             P[i] = Answer[i];
+
+
             //將F分開存入二維陣列
             string textcache = Cache[i][1];
             WrongOption[i] = textcache.Split(","[0]);
+
         }
         
 
@@ -286,6 +300,7 @@ public class StageData : MonoBehaviour
         if (P.Length >= 3)
         {
             ModeCheck = 1;
+
             //選擇要出的問題(從P中取出3個選項)
             int Q1 = UnityEngine.Random.Range(0, P.Length);
             int Q2 = UnityEngine.Random.Range(0, P.Length);
@@ -362,15 +377,11 @@ public class StageData : MonoBehaviour
         }
 
         
-        
-
-
-
-
-
         if  (P.Length < 3 )
         {
             ModeCheck = 2;
+            Vector2 RightPosition_3 = new Vector2(-1056, 4.5f);
+            GameObject.Find("Canvas/GameContent/Answer_Pool/3").SetActive(false);
             int Q1 = UnityEngine.Random.Range(0, P.Length);
             int Q2 = UnityEngine.Random.Range(0, P.Length);
             while (Q1==Q2)
@@ -749,7 +760,7 @@ public class StageData : MonoBehaviour
         //創建紀錄
         if (!File.Exists(path))
         {
-            File.WriteAllText(path, "錯誤紀錄:\n");
+            File.WriteAllText(path, "時間:\n"+ "題號,選項整合的組別號\n");
         }
         if (!File.Exists(finishpath))
         {
@@ -764,6 +775,12 @@ public class StageData : MonoBehaviour
         //初始設定拼圖塊數以及拼圖時間
         
         GameObject.Find("Canvas/PuzzleTime").GetComponent<Text>().text = "Puzzle Time:"+puzzle_time;
+
+        for (int i = 1; i <= 6; i++)
+        {
+            GameObject.Find("Canvas/GameContent/Pool/Option" + i).GetComponent<OptionScript>().Option_Right = true;           
+        }
+        File.AppendAllText(path, DateTimeText + "\n");
     }
 
     public void Update()
@@ -773,10 +790,10 @@ public class StageData : MonoBehaviour
     int failcheck = 0;
     
     //答案選擇及確認
-    public void PushButtom1()
+    public void PushButtom1(int vv)
     {
         string buttom1 = GameObject.Find("Canvas/GameContent/Pool/Option1/Text").GetComponent<Text>().text;
-        if(anscheck == 3&&ModeCheck == 1)
+        if (anscheck == 3&&ModeCheck == 1)
         {
             return;
         }
@@ -785,12 +802,12 @@ public class StageData : MonoBehaviour
             return;
         }
         print("目前anscheck:" + anscheck);
-        GameObject.Find("Canvas/GameContent/Pool/Option1").SetActive(false);
-        AnswerCheck(anscheck, score,buttom1);
+        //GameObject.Find("Canvas/GameContent/Pool/Option1").SetActive(false);
+        AnswerCheck( vv,1, buttom1);
     }
 
 
-    public void PushButtom2()
+    public void PushButtom2(int vv)
     {
         string buttom2 = GameObject.Find("Canvas/GameContent/Pool/Option2/Text").GetComponent<Text>().text;
         if (anscheck == 3 && ModeCheck == 1)
@@ -802,12 +819,12 @@ public class StageData : MonoBehaviour
             return;
         }
         print("目前anscheck:" + anscheck);
-        GameObject.Find("Canvas/GameContent/Pool/Option2").SetActive(false);
-        AnswerCheck(anscheck, score, buttom2);
+       // GameObject.Find("Canvas/GameContent/Pool/Option2").SetActive(false);
+        AnswerCheck( vv,2, buttom2);
     }
 
 
-    public void PushButtom3()
+    public void PushButtom3(int vv)
     {
         string buttom3 = GameObject.Find("Canvas/GameContent/Pool/Option3/Text").GetComponent<Text>().text;
         if (anscheck == 3 && ModeCheck == 1)
@@ -819,12 +836,12 @@ public class StageData : MonoBehaviour
             return;
         }
         print("目前anscheck:" + anscheck);
-        GameObject.Find("Canvas/GameContent/Pool/Option3").SetActive(false);
-        AnswerCheck(anscheck, score, buttom3);
+       // GameObject.Find("Canvas/GameContent/Pool/Option3").SetActive(false);
+        AnswerCheck(vv,3, buttom3);
     }
 
 
-    public void PushButtom4()
+    public void PushButtom4(int vv)
     {
         string buttom4 = GameObject.Find("Canvas/GameContent/Pool/Option4/Text").GetComponent<Text>().text;
         if (anscheck == 3 && ModeCheck == 1)
@@ -836,12 +853,12 @@ public class StageData : MonoBehaviour
             return;
         }
         print("目前anscheck:" + anscheck);
-        GameObject.Find("Canvas/GameContent/Pool/Option4").SetActive(false);
-        AnswerCheck(anscheck, score, buttom4);
+       // GameObject.Find("Canvas/GameContent/Pool/Option4").SetActive(false);
+        AnswerCheck(vv,4, buttom4);
     }
 
 
-    public void PushButtom5()
+    public void PushButtom5(int vv)
     {
         string buttom5 = GameObject.Find("Canvas/GameContent/Pool/Option5/Text").GetComponent<Text>().text;
         if (anscheck == 3 && ModeCheck == 1)
@@ -853,12 +870,12 @@ public class StageData : MonoBehaviour
             return;
         }
         print("目前anscheck:" + anscheck);
-        GameObject.Find("Canvas/GameContent/Pool/Option5").SetActive(false);
-        AnswerCheck(anscheck, score, buttom5);
+        //GameObject.Find("Canvas/GameContent/Pool/Option5").SetActive(false);
+        AnswerCheck( vv,5, buttom5);
     }
 
 
-    public void PushButtom6()
+    public void PushButtom6(int vv)
     {
         string buttom6 = GameObject.Find("Canvas/GameContent/Pool/Option6/Text").GetComponent<Text>().text;
         if (anscheck == 3 && ModeCheck == 1)
@@ -870,8 +887,8 @@ public class StageData : MonoBehaviour
             return;
         }
         print("目前anscheck:" + anscheck);
-        GameObject.Find("Canvas/GameContent/Pool/Option6").SetActive(false);
-        AnswerCheck(anscheck, score, buttom6);
+        //GameObject.Find("Canvas/GameContent/Pool/Option6").SetActive(false);
+        AnswerCheck(vv,6, buttom6);
     }
 
 
@@ -880,107 +897,80 @@ public class StageData : MonoBehaviour
     //根據錯誤次數記錄
     public int WrongTimes = 0;
 
-
+    //紀錄選擇的選項是否正確
+    public bool WrongCheck1;
+    public bool WrongCheck2;
+    public bool WrongCheck3;
+    public string Space1;
+    public string Space2;
+    public string Space3;
     //確認答案是否正確給予分數
-    public void AnswerCheck(int value,int ScoreValue,string ans = " ")
+    public void AnswerCheck(int OptionNumber,int Option_num, string ans = " ")
     { 
         if(ans.Equals("re"))
         {
             return;
         }
         //選項選擇後的答案確認
-        if (anscheck == 0 && ans == QuestionAns[0])
+        if (ans == QuestionAns[OptionNumber])
         {
+            switch (OptionNumber)
+            {
+                case 0:
+                    WrongCheck1 = true;
+                    Space1 = GameObject.Find("Canvas/GameContent/Pool/Option" + Option_num).name;
+                    break;
+                case 1:
+                    WrongCheck2 = true;
+                    Space2 = GameObject.Find("Canvas/GameContent/Pool/Option" + Option_num).name;
+                    break;
+                case 2:
+                    WrongCheck3 = true;
+                    Space3 = GameObject.Find("Canvas/GameContent/Pool/Option" + Option_num).name;
+                    break;
+            }
+            int OptionNumberTemp = OptionNumber + 1;
+            GameObject.Find("Canvas/GameContent/Pool/Option" + Option_num).GetComponent<OptionScript>().Option_Right = true;
+            print(GameObject.Find("Canvas/GameContent/Pool/Option" + Option_num).GetComponent<OptionScript>().Option_Right);        
             anscheck += 1;
             score += 100;
             print("現在模式為:" + ModeCheck);
             print("目前分數:" + anscheck + "目前anscheck:" + score);
             GameObject.Find("Canvas/Score/text").GetComponent<Text>().text = score.ToString();
-            EQ = EQ.Replace("1.______", "<color=#0000ff><b>" + ans + "</b></color>"); //選擇後放入答案,並做顏色變換
+            EQ = EQ.Replace(OptionNumberTemp + ".______", "<color=#0000ff><b>" + ans + "</b></color>"); //選擇後放入答案,並做顏色變換
             GameObject.Find("Canvas/GameContent/EnglishQ/Text").GetComponent<Text>().text = EQ;
             return;
         }
-        if (anscheck == 0 && ans != QuestionAns[0])
+        if (ans != QuestionAns[OptionNumber])
         {
+            switch (OptionNumber)
+            {
+                case 0:
+                    WrongCheck1 = false;
+                    Space1 = GameObject.Find("Canvas/GameContent/Pool/Option" + Option_num).name;
+                    break;
+                case 1:
+                    WrongCheck2 = false;
+                    Space2 = GameObject.Find("Canvas/GameContent/Pool/Option" + Option_num).name;
+                    break;
+                case 2:
+                    WrongCheck3 = false;
+                    Space3 = GameObject.Find("Canvas/GameContent/Pool/Option" + Option_num).name;
+                    break;
+            }
+            int OptionNumberTemp = OptionNumber + 1;
+            GameObject.Find("Canvas/GameContent/Pool/Option" + Option_num).GetComponent<OptionScript>().Option_Right = false;
+            print(GameObject.Find("Canvas/GameContent/Pool/Option" + Option_num).GetComponent<OptionScript>().Option_Right);
             anscheck += 1;
             score -= 100;
             WrongTimes += 1;
-            if (WrongTimes == 1)
-            {
-                File.AppendAllText(path, "時間:" + DateTimeText + "\n" + "題號:" + x + "\n" + "中文:" + CHQ + "\n");
-                File.AppendAllText(path, "英文:" + EQ_Re + "\n");
-            }
             print("現在模式為:" + ModeCheck);
             print("目前分數:" + anscheck + "目前anscheck:" + score);
             GameObject.Find("Canvas/Score/text").GetComponent<Text>().text = score.ToString();
-            EQ = EQ.Replace("1.______", "<color=#B71B1BFF><b>" + ans + "</b></color>");
+            EQ = EQ.Replace(OptionNumberTemp + ".______", "<color=#B71B1BFF><b>" + ans + "</b></color>");
             GameObject.Find("Canvas/GameContent/EnglishQ/Text").GetComponent<Text>().text = EQ;
-            File.AppendAllText(path, "第1格選擇了:" + ans + "正解為:" + QuestionAns[0] + "\n");
             return;
-        }
-        if (anscheck  == 1 && ans == QuestionAns[1])
-        {
-            anscheck += 1;
-            score += 100;
-            print("現在模式為:" + ModeCheck);
-            print("目前分數:" + anscheck + "目前anscheck:" + score);
-            GameObject.Find("Canvas/Score/text").GetComponent<Text>().text = score.ToString();
-            EQ = EQ.Replace("2.______", "<color=#0000ff><b>" + ans + "</b></color>");
-            GameObject.Find("Canvas/GameContent/EnglishQ/Text").GetComponent<Text>().text = EQ;
-            if (ModeCheck == 1)
-            {
-                return;
-            }
-           
-        }
-        if (anscheck == 1 && ans != QuestionAns[1])
-        {
-            anscheck += 1;
-            score -= 100;
-            WrongTimes += 1;
-            if (WrongTimes == 1)
-            {
-                File.AppendAllText(path, "時間:" + DateTimeText + "\n"+"題號:"+ x+"\n" + "中文:" + CHQ + "\n");
-                File.AppendAllText(path, "英文:" + EQ_Re + "\n");
-            }
-            print("現在模式為:" + ModeCheck);
-            print("目前分數:" + anscheck + "目前anscheck:" + score);
-            GameObject.Find("Canvas/Score/text").GetComponent<Text>().text = score.ToString();
-            EQ = EQ.Replace("2.______", "<color=#B71B1BFF><b>" + ans + "</b></color>");
-            GameObject.Find("Canvas/GameContent/EnglishQ/Text").GetComponent<Text>().text = EQ;
-            File.AppendAllText(path, "第2格選擇了:" + ans + "正解為:" + QuestionAns[1] + "\n");
-            if (ModeCheck == 1)
-            {
-                return;
-            }
-        }
-        if (anscheck == 2 && ans == QuestionAns[2] && ModeCheck == 1)
-        {
-            anscheck += 1;
-            score += 100;
-            print("現在模式為:" + ModeCheck);
-            print("目前分數:" + anscheck + "目前anscheck:" + score);
-            GameObject.Find("Canvas/Score/text").GetComponent<Text>().text = score.ToString();
-            EQ = EQ.Replace("3.______", "<color=#0000ff><b>" + ans + "</b></color>");
-            GameObject.Find("Canvas/GameContent/EnglishQ/Text").GetComponent<Text>().text = EQ;
-        }
-        if (anscheck == 2 && ans != QuestionAns[2] && ModeCheck == 1)
-        {
-            anscheck += 1;
-            score -= 100;
-            WrongTimes += 1;
-            if (WrongTimes == 1)
-            {
-                File.AppendAllText(path, "時間:" + DateTimeText + "\n" + "題號:" + x + "\n" + "中文:" + CHQ + "\n");
-                File.AppendAllText(path, "英文:" + EQ_Re + "\n");
-            }
-            print("現在模式為:" + ModeCheck);
-            print("目前分數:" + anscheck + "目前anscheck:" + score);
-            GameObject.Find("Canvas/Score/text").GetComponent<Text>().text = score.ToString();
-            EQ = EQ.Replace("3.______", "<color=#B71B1BFF><b>" + ans + "</b></color>");
-            GameObject.Find("Canvas/GameContent/EnglishQ/Text").GetComponent<Text>().text = EQ;
-            File.AppendAllText(path, "第3格選擇了:" + ans + "正解為:" + QuestionAns[2] + "\n");            
-        }
+        }       
         return;
     }
     public void EnterCheck()
@@ -1110,84 +1100,95 @@ public class StageData : MonoBehaviour
         puzzlenum = puzzletype;
         File.WriteAllText(puzzlepath, puzzlenum.ToString());
     }
-    public void Re()
+    public void Re1()
     {
         if (Re_Check == 1)
         {
             return;
         }
-        //重置答案與分數
-        anscheck = 0;
-        score = 0;
-        EQ = EQ_Re;
-        //重新打亂順序
-        int[] RanOpAgain = new int[6];
-        for (int i = 0; i < 6; i++)
+        if (GameObject.Find("Canvas/GameContent/Pool/" + Space1).GetComponent<OptionScript>().Option_Right == true)
         {
-            int temp = UnityEngine.Random.Range(1, 7);
-            for(int j = 0; j < 6;j++)
-            {
-                while (RanOpAgain[j] == temp)
-                {
-                    temp = UnityEngine.Random.Range(1, 7);
-                    j = 0;
-                    continue;
-                }
-            }
-            RanOpAgain[i] = temp;
-            print(temp);
-            if (i == 0)
-            {
-                GameObject.Find("Canvas/GameContent/Pool/Option" + temp).SetActive(true);
-                GameObject.Find("Canvas/GameContent/Pool/Option" + temp + "/Text").GetComponent<Text>().text = Option1;
-                print(Option1);
-            }
-            if (i == 1)
-            {
-                GameObject.Find("Canvas/GameContent/Pool/Option" + temp).SetActive(true);
-                GameObject.Find("Canvas/GameContent/Pool/Option" + temp + "/Text").GetComponent<Text>().text = Option2;
-                print(Option2);
-            }
-            if (i == 2)
-            {
-                GameObject.Find("Canvas/GameContent/Pool/Option" + temp).SetActive(true);
-                GameObject.Find("Canvas/GameContent/Pool/Option" + temp + "/Text").GetComponent<Text>().text = Option3;
-                print(Option3);
-            }
-            if (i == 3)
-            {
-                GameObject.Find("Canvas/GameContent/Pool/Option" + temp).SetActive(true);
-                GameObject.Find("Canvas/GameContent/Pool/Option" + temp + "/Text").GetComponent<Text>().text = Option4;
-                print(Option4);
-            }
-            if (i == 4)
-            {
-                GameObject.Find("Canvas/GameContent/Pool/Option" + temp).SetActive(true);
-                GameObject.Find("Canvas/GameContent/Pool/Option" + temp + "/Text").GetComponent<Text>().text = Option5;
-                print(Option5);
-            }
-            if (i == 5)
-            {
-                GameObject.Find("Canvas/GameContent/Pool/Option" + temp).SetActive(true);
-                GameObject.Find("Canvas/GameContent/Pool/Option" + temp + "/Text").GetComponent<Text>().text = Option6;
-                print(Option6);
-            }
-
+            print("選項正確");
+            return;
         }
+        if (GameObject.Find("Canvas/GameContent/Pool/" + Space1).GetComponent<OptionScript>().Option_Right == false)
+        {
+            print("選項錯誤");
+            print(GameObject.Find("Canvas/GameContent/Pool/" + Space1 + "/Text").GetComponent<Text>().text);
+            string str_tmp = GameObject.Find("Canvas/GameContent/Pool/" + Space1 + "/Text").GetComponent<Text>().text;          
+            File.AppendAllText(path, x + ","+ str_tmp+",");
+            GameObject.Find("Canvas/GameContent").GetComponent<data_analvite>().convert(x,QuestionAns[0], str_tmp);
+            EQ = EQ.Replace(str_tmp, "1.______");
+            GameObject.Find("Canvas/GameContent/EnglishQ/Text").GetComponent<Text>().text = EQ;
+            GameObject.Find("Canvas/Score/text").GetComponent<Text>().text = score.ToString();
+            anscheck -= 1;
+            score += 100;
+            GameObject.Find("Canvas/GameContent/Pool/" + Space1).GetComponent<OptionScript>().Re();          
+            
+            return;
+        }
+        return;
+    }
+    public void Re2()
+    {
+        if (Re_Check == 1)
+        {
+            return;
+        }
+        if (GameObject.Find("Canvas/GameContent/Pool/" + Space2).GetComponent<OptionScript>().Option_Right == true)
+        {
+            print("選項正確");
+            return;
+        }
+        if (GameObject.Find("Canvas/GameContent/Pool/" + Space2).GetComponent<OptionScript>().Option_Right == false)
+        {
+            print("選項錯誤");
+            print(GameObject.Find("Canvas/GameContent/Pool/" + Space2 + "/Text").GetComponent<Text>().text);
+            string str_tmp = GameObject.Find("Canvas/GameContent/Pool/" + Space2 + "/Text").GetComponent<Text>().text;
+            File.AppendAllText(path, x + "," + str_tmp + ",");
+            GameObject.Find("Canvas/GameContent").GetComponent<data_analvite>().convert(x, QuestionAns[1], str_tmp);
+            EQ = EQ.Replace(str_tmp, "2.______");
+            GameObject.Find("Canvas/GameContent/EnglishQ/Text").GetComponent<Text>().text = EQ;
+            GameObject.Find("Canvas/Score/text").GetComponent<Text>().text = score.ToString();
+            anscheck -= 1;
+            score += 100;
+            GameObject.Find("Canvas/GameContent/Pool/" + Space2).GetComponent<OptionScript>().Re();
 
+            return;
+        }
+        return;
+    }
+    public void Re3()
+    {
+        if (Re_Check == 1)
+        {
+            return;
+        }
+        if (ModeCheck == 2)
+        {
+            return;
+        }
+        if (GameObject.Find("Canvas/GameContent/Pool/" + Space3).GetComponent<OptionScript>().Option_Right == true)
+        {
+            print("選項正確");
+            return;
+        }
+        if (GameObject.Find("Canvas/GameContent/Pool/" + Space3).GetComponent<OptionScript>().Option_Right == false)
+        {
+            print("選項錯誤");
+            print(GameObject.Find("Canvas/GameContent/Pool/" + Space3 + "/Text").GetComponent<Text>().text);
+            string str_tmp = GameObject.Find("Canvas/GameContent/Pool/" + Space3 + "/Text").GetComponent<Text>().text;
+            File.AppendAllText(path, x + "," + str_tmp + ",");
+            GameObject.Find("Canvas/GameContent").GetComponent<data_analvite>().convert(x, QuestionAns[2], str_tmp);
+            EQ = EQ.Replace(str_tmp, "3.______");
+            GameObject.Find("Canvas/GameContent/EnglishQ/Text").GetComponent<Text>().text = EQ;
+            GameObject.Find("Canvas/Score/text").GetComponent<Text>().text = score.ToString();
+            anscheck -= 1;
+            score += 100;
+            GameObject.Find("Canvas/GameContent/Pool/" + Space3).GetComponent<OptionScript>().Re();
 
-
-        //重置英文題目
-        GameObject.Find("Canvas/GameContent/EnglishQ/Text").GetComponent<Text>().text = EQ_Re;
-
-        //重置分數
-        GameObject.Find("Canvas/Score/text").GetComponent<Text>().text = score.ToString();
-
-        //重置時間
-        time_int -= 10;
-        //呼叫函式,改變目前答案
-        AnswerCheck(anscheck, score, "re");
-
+            return;
+        }
         return;
     }
     public void NextCheck()

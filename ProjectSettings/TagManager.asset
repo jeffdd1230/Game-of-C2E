@@ -8,6 +8,12 @@ TagManager:
   - GlobalUIMusic
   - slider
   - drop
+  - Option
+  - Option2
+  - Option3
+  - Option4
+  - Option5
+  - Option6
   layers:
   - Default
   - TransparentFX
